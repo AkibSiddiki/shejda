@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
-            $table->boolean('is_admin')->default(false);
+            $table->unsignedTinyInteger('role')->default(2)->comment('1 = admin, 2 = moderator');
+            $table->boolean('is_active')->default(1)->comment('1 = active, 0 = inactive');
             $table->timestamps();
         });
     }

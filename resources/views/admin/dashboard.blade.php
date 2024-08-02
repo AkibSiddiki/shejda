@@ -15,7 +15,7 @@
                                     and adjust the settings as needed.
                                 </p>
 
-                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">Account
+                                <a href="{{ route('panel.account.edit') }}" class="btn btn-sm btn-outline-primary">Account
                                     Setting</a>
                             </div>
                         </div>

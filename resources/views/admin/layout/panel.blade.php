@@ -99,6 +99,8 @@
 
     <!-- Page JS -->
     <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
+
+    @stack('js')
 </body>
 
 </html>

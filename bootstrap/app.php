@@ -24,6 +24,10 @@ return Application::configure(basePath: dirname(__DIR__))
                 return response()->view('admin.500', [], 500);
             }
 
+            if ($response->getStatusCode() === 419) {
+                return response()->view('admin.419', [], 419);
+            }
+
             return $response;
         });
     })->create();
