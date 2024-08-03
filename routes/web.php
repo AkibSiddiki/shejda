@@ -3,11 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
-Route::middleware('web')->name('web.')->group(function () {
-    Route::get('/', [HomeController::class, 'index'])->name('home');
-});
 
+
+Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {
@@ -17,9 +18,9 @@ Route::prefix('users-mG40sI')->group(function () {
 });
 
 Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(function () {
-    Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/users', [App\Http\Controllers\UserController::class, 'index'])->name('users');
-    Route::get('/users/account/edit', [App\Http\Controllers\UserController::class, 'edit_account'])->name('account.edit');
-    Route::post('/users/account/edit', [App\Http\Controllers\UserController::class, 'update_account'])->name('account.update');
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/users', [UserController::class, 'index'])->name('users');
+    Route::get('/users/account/edit', [UserController::class, 'edit_account'])->name('account.edit');
+    Route::post('/users/account/edit', [UserController::class, 'update_account'])->name('account.update');
 });
 // admin routes - end

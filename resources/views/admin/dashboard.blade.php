@@ -8,7 +8,8 @@
                     <div class="d-flex align-items-start row">
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title text-primary mb-3">Welcome to GPanel! 🎉</h5>
+                                <h5 class="card-title text-primary mb-3">Welcome to Shejda's GPanel. Enjoy the management of
+                                    your website.</h5>
                                 <p class="mb-6">
                                     You have successfully logged in to our admin panel.<br />Feel free
                                     to explore all the features

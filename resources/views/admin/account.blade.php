@@ -27,8 +27,8 @@
                         @csrf
                         <div class="card-body">
                             <div class="d-flex align-items-start align-items-sm-center gap-6 pb-4 border-bottom">
-                                <img src="{{ asset($user->image) ?? asset('assets/img/avatars/default.png') }}"
-                                    alt="user-avatar" class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
+                                <img src="{{ asset($user->image ?? 'assets/img/avatars/default.png') }}" alt="user-avatar"
+                                    class="d-block w-px-100 h-px-100 rounded" id="uploadedAvatar" />
                                 <div class="button-wrapper">
                                     <label for="image" class="btn btn-primary me-3 mb-4" tabindex="0">
                                         <span class="d-none d-sm-block">Upload new photo</span>
