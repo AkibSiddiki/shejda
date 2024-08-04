@@ -15,19 +15,19 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        $exceptions->respond(function (Response $response) {
-            if ($response->getStatusCode() === 404) {
-                return response()->view('admin.404', [], 404);
-            }
+        // $exceptions->respond(function (Response $response) {
+        //     if ($response->getStatusCode() === 404) {
+        //         return response()->view('admin.404', [], 404);
+        //     }
 
-            if ($response->getStatusCode() === 500) {
-                return response()->view('admin.500', [], 500);
-            }
+        //     if ($response->getStatusCode() === 500) {
+        //         return response()->view('admin.500', [], 500);
+        //     }
 
-            if ($response->getStatusCode() === 419) {
-                return response()->view('admin.419', [], 419);
-            }
+        //     if ($response->getStatusCode() === 419) {
+        //         return response()->view('admin.419', [], 419);
+        //     }
 
-            return $response;
-        });
+        //     return $response;
+        // });
     })->create();

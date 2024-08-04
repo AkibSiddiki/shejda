@@ -12,7 +12,32 @@
                 <div class="text-truncate" data-i18n="Dashboards">Dashboard</div>
             </a>
         </li>
-
+        <li class="menu-header small text-uppercase">
+            <span class="menu-header-text">Content Management</span>
+        </li>
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-book-content"></i>
+                <div class="text-truncate" data-i18n="Informative Content">Informative Content</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('panel.slider.index') }}" class="menu-link">
+                        <div class="text-truncate" data-i18n="Without menu">Home Silder</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="layouts-without-navbar.html" class="menu-link">
+                        <div class="text-truncate" data-i18n="Without navbar">Welcome Note</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="layouts-blank.html" class="menu-link">
+                        <div class="text-truncate" data-i18n="Blank">Blank</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

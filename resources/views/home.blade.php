@@ -7,7 +7,16 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="hero-slider">
-                        <div class="items">
+                        @foreach ($sliders as $banner)
+                            <div class="items">
+                                <div class="hero-overlay"></div>
+                                <div class="slider-img">
+                                    <img class="img-fluid w-100" src="{{ asset($banner->image) }}" alt="{{ $banner->title }}"
+                                        title="{{ $banner->title }}">
+                                </div>
+                            </div>
+                        @endforeach
+                        {{-- <div class="items">
                             <div class="hero-overlay"></div>
                             <div class="slider-img">
                                 <img class="img-fluid w-100" src="{{ asset('assets/web/image/bg/banner5.webp') }}"
@@ -27,7 +36,7 @@
                                 <img class="img-fluid w-100" src="{{ asset('assets/web/image/bg/banner4.jpg') }}"
                                     alt="" title="">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>
@@ -158,9 +167,8 @@
                     <div class="Hproject-wrap">
                         <a href="project-details.html">
                             <div class="hproject-img-wrap">
-                                <img class="img-fluid"
-                                    src="{{ asset('assets/web/image/bg/project/1635247386xAync.jpg') }}" alt=""
-                                    title="">
+                                <img class="img-fluid" src="{{ asset('assets/web/image/bg/project/1635247386xAync.jpg') }}"
+                                    alt="" title="">
                             </div>
                             <div class="hproject-img-text">
                                 <h5>The Sanctum</h5>
