@@ -48,7 +48,8 @@
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false"> About
                                             us </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="our-story.html">Our Story</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.ourStory') }}">Our
+                                                    Story</a></li>
                                             <li><a class="dropdown-item" href="visionMission.html">Vision &
                                                     Mission</a></li>
                                             <li><a class="dropdown-item" href="board-of-directors.html">Board of

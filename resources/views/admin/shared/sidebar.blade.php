@@ -27,8 +27,8 @@
                     </a>
                 </li>
                 <li class="menu-item">
-                    <a href="layouts-without-navbar.html" class="menu-link">
-                        <div class="text-truncate" data-i18n="Without navbar">Welcome Note</div>
+                    <a href="{{ route('panel.infoPage.index') }}" class="menu-link">
+                        <div class="text-truncate" data-i18n="Without navbar">Info Pages</div>
                     </a>
                 </li>
                 <li class="menu-item">

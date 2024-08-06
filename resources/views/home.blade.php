@@ -209,30 +209,24 @@
             <div class="row">
                 <div class="col-md-6 order-2 order-sm-1">
                     <div class="about-us-img">
-                        <img class="aboutImgOne img-fluid" src="{{ asset('assets/web/image/bg/about-us4.jpg') }}"
-                            alt="" title="">
-                        <img class="aboutImgTwo img-fluid" src="{{ asset('assets/web/image/bg/about-us3.jpg') }}"
-                            alt="" title="">
+                        <img class="aboutImgOne img-fluid" src="{{ asset($welcome->image1) }}"
+                            alt="{{ $welcome->title }}" title="{{ $welcome->title }}">
+                        <img class="aboutImgTwo img-fluid" src="{{ asset($welcome->image2) }}"
+                            alt="{{ $welcome->title }}" title="{{ $welcome->title }}">
                     </div>
                 </div>
                 <div class="col-md-6 ps-xl-5 order-1 order-sm-2">
                     <div class="about-us-text">
                         <div class="section-heading">
-                            <h2>Welcome to <span>Shejda</span></h2>
+                            @php
+                                $lastWord = explode(' ', $welcome->title)[count(explode(' ', $welcome->title)) - 1];
+                                $restWord = substr($welcome->title, 0, strpos($welcome->title, $lastWord));
+                                $title = $restWord . '<span>' . $lastWord . '</span>';
+                            @endphp
+                            <h2>{!! $title !!}</h2>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus aspernatur iusto porro
-                            praesentium enim fugiat ea. Esse dignissimos dolorem unde, optio omnis perspiciatis
-                            distinctio autem, tenetur totam recusandae dolores itaque possimus aliquam minima
-                            deleniti obcaecati magnam explicabo accusantium architecto excepturi sequi minus. Porro
-                            veritatis saepe eligendi a voluptatibus impedit! Quos. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Consequuntur laboriosam, veritatis possimus provident
-                            quibusdam quis pariatur, reprehenderit voluptatem autem ab distinctio atque numquam
-                            vero! Dolore cumque nobis modi, amet maiores incidunt esse vel earum quis at libero
-                            velit voluptas quasi minus debitis autem iusto neque sint corporis explicabo provident
-                            doloribus consectetur ut. Earum illum quibusdam et quidem, praesentium tenetur, commodi
-                            culpa dolorem debitis mollitia ut. At quibusdam suscipit unde harum corrupti beatae,
-                            sequi quas eveniet illum voluptatum ipsum pariatur veniam.</p>
-                        <a class="common-btn" href="about-us.html">read more</a>
+                        <p>{!! $welcome->content !!}</p>
+                        <a class="common-btn" href="{{ route('web.ourStory') }}">read more</a>
                     </div>
                 </div>
             </div>
@@ -247,10 +241,13 @@
                 <div class="col-md-5">
                     <div class="why-choose-us-text">
                         <div class="section-heading">
-                            <h2>Why <span>Shejda</span></h2>
-                            <p>Shejda aspires to weave an unprecedented experience of fine living cocooned in
-                                comfort for you. It’s the statement of prestige and elegant Architecture that sets
-                                us apart.</p>
+                            @php
+                                $lastWord = explode(' ', $why->title)[count(explode(' ', $why->title)) - 1];
+                                $restWord = substr($why->title, 0, strpos($why->title, $lastWord));
+                                $title = $restWord . '<span>' . $lastWord . '</span>';
+                            @endphp
+                            <h2>{!! $title !!}</h2>
+                            <p>{!! $why->content !!}</p>
                         </div>
                     </div>
                 </div>

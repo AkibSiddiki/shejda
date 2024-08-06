@@ -6,10 +6,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SliderController;
-
+use App\Http\Controllers\InfoPageController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
+Route::get('/our-story', [HomeController::class, 'ourStory'])->name('web.ourStory')->middleware('web');
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {
@@ -32,5 +33,12 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     Route::post('/slider/update/{slider}', [SliderController::class, 'update'])->name('slider.update');
     Route::delete('/slider/delete/{slider}', [SliderController::class, 'delete'])->name('slider.destroy');
     Route::get('/slider/status/{slider}', [SliderController::class, 'statusToggle'])->name('slider.status');
+
+
+    //infoPage
+    Route::get('/infoPages', [InfoPageController::class, 'index'])->name('infoPage.index');
+    Route::get('/infoPage/edit/{infoPage}', [InfoPageController::class, 'edit'])->name('infoPage.edit');
+    Route::post('/infoPage/update/{infoPage}', [InfoPageController::class, 'update'])->name('infoPage.update');
+    Route::get('/infoPage/status/{infoPage}', [InfoPageController::class, 'statusToggle'])->name('infoPage.status');
 });
 // admin routes - end

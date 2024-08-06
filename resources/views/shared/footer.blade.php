@@ -9,8 +9,9 @@
                                 data-wow-delay="0.1s">
                                 <div class="footer-widget__column footer-widget__about">
                                     <div class="footer-widget__about-logo">
-                                        <a href="index.html"> <img class="img-fluid" src="image/bg/logo.png"
-                                                alt="" title=""> </a>
+                                        <a href="{{ route('web.home') }}"> <img class="img-fluid"
+                                                src="{{ asset('assets/web/image/bg/logo.png') }}"
+                                                alt="{{ env('APP_NAME') }}" title="{{ env('APP_NAME') }}"> </a>
                                     </div>
                                     <p class="footer-widget__about-text">Shejda Development & Holdings Ltd.<br>977,
                                         East Shewrapara (1st Floor), <br>Orbit Lane, Dhaka-1216, Bangladesh.</p>
