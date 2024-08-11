@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\InfoPageController;
+use App\Http\Controllers\NewsEventController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
@@ -40,5 +41,14 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     Route::get('/infoPage/edit/{infoPage}', [InfoPageController::class, 'edit'])->name('infoPage.edit');
     Route::post('/infoPage/update/{infoPage}', [InfoPageController::class, 'update'])->name('infoPage.update');
     Route::get('/infoPage/status/{infoPage}', [InfoPageController::class, 'statusToggle'])->name('infoPage.status');
+
+    //news and events
+    Route::get('/news-events', [NewsEventController::class, 'index'])->name('newsEvent.index');
+    Route::get('/news-event/create', [NewsEventController::class, 'create'])->name('newsEvent.create');
+    Route::post('/news-event/store', [NewsEventController::class, 'store'])->name('newsEvent.store');
+    Route::get('/news-event/edit/{newsEvent}', [NewsEventController::class, 'edit'])->name('newsEvent.edit');
+    Route::post('/news-event/update/{newsEvent}', [NewsEventController::class, 'update'])->name('newsEvent.update');
+    Route::get('/news-event/status/{newsEvent}', [NewsEventController::class, 'statusToggle'])->name('newsEvent.status');
+    Route::delete('/news-event/delete/{newsEvent}', [NewsEventController::class, 'delete'])->name('newsEvent.destroy');
 });
 // admin routes - end

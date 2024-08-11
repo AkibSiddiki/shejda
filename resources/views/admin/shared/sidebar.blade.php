@@ -31,12 +31,14 @@
                         <div class="text-truncate" data-i18n="Without navbar">Info Pages</div>
                     </a>
                 </li>
-                <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
-                        <div class="text-truncate" data-i18n="Blank">Blank</div>
-                    </a>
-                </li>
             </ul>
+        </li>
+        <li
+            class="menu-item {{ Route::is('panel.newsEvent.index') || Route::is('panel.newsEvent.create') ? 'active' : '' }}">
+            <a href="{{ route('panel.newsEvent.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div class="text-truncate" data-i18n="News and Event">News and Event</div>
+            </a>
         </li>
         <!-- Layouts -->
         <li class="menu-item">
