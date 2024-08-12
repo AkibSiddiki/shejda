@@ -1,5 +1,8 @@
 @extends('admin.layout.panel')
 @section('title', 'Create News and Event')
+@push('css')
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css">
+@endpush
 @section('main')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
@@ -69,4 +72,13 @@
             }
         }
     </script>
+    <script type="importmap">
+		{
+			"imports": {
+				"ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
+				"ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
+			}
+		}
+	</script>
+    <script type="module" src="{{ asset('assets/js/ckeditor5.js') }}"></script>
 @endpush
