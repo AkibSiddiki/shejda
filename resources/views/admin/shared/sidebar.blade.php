@@ -40,6 +40,13 @@
                 <div class="text-truncate" data-i18n="News and Event">News and Event</div>
             </a>
         </li>
+        <li
+            class="menu-item {{ Route::is('panel.project.index') || Route::is('panel.project.create') ? 'active' : '' }}">
+            <a href="{{ route('panel.project.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-buildings"></i>
+                <div class="text-truncate" data-i18n="Projects">Projects</div>
+            </a>
+        </li>
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">

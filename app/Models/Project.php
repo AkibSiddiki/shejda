@@ -20,4 +20,10 @@ class Project extends Model
     {
         return $this->hasMany(ProjectBooking::class);
     }
+
+
+    public function unseenBookingsCount()
+    {
+        return $this->bookings()->where('is_seen', 0)->count();
+    }
 }

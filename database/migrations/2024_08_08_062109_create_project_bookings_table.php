@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('message')->nullable();
             $table->boolean('status')->default(1)->comment('1 = active, 0 = inactive');
+            $table->boolean('is_seen')->default(0)->comment('1 = seen, 0 = not seen');
             $table->timestamps();
         });
     }

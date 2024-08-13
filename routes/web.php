@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\InfoPageController;
 use App\Http\Controllers\NewsEventController;
+use App\Http\Controllers\ProjectController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
@@ -50,5 +51,19 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     Route::post('/news-event/update/{newsEvent}', [NewsEventController::class, 'update'])->name('newsEvent.update');
     Route::get('/news-event/status/{newsEvent}', [NewsEventController::class, 'statusToggle'])->name('newsEvent.status');
     Route::delete('/news-event/delete/{newsEvent}', [NewsEventController::class, 'delete'])->name('newsEvent.destroy');
+
+    //projects
+    Route::get('/projects', [ProjectController::class, 'index'])->name('project.index');
+    Route::get('/project/create', [ProjectController::class, 'create'])->name('project.create');
+    Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
+    Route::get('/project/edit/{project}', [ProjectController::class, 'edit'])->name('project.edit');
+    Route::post('/project/update/{project}', [ProjectController::class, 'update'])->name('project.update');
+    Route::delete('/project/delete/{project}', [ProjectController::class, 'destroy'])->name('project.destroy');
+    Route::get('/project/status/{project}', [ProjectController::class, 'statusToggle'])->name('project.status');
+    Route::get('/project/photos/create/{project}', [ProjectController::class, 'createPhoto'])->name('project.photos.create');
+    Route::post('/project/photos/store/{project}', [ProjectController::class, 'storePhotos'])->name('project.photos.store');
+    Route::delete('/project/photos/delete/{photo}', [ProjectController::class, 'destroyPhoto'])->name('project.photos.destroy');
+    Route::get('/project/bookings/{project}', [ProjectController::class, 'bookings'])->name('project.bookings');
+    Route::get('/project/booking/{projectBooking}', [ProjectController::class, 'bookingSeen'])->name('project.seen');
 });
 // admin routes - end
