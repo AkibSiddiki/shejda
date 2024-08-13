@@ -9,6 +9,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\InfoPageController;
 use App\Http\Controllers\NewsEventController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\JobController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
@@ -65,5 +66,17 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     Route::delete('/project/photos/delete/{photo}', [ProjectController::class, 'destroyPhoto'])->name('project.photos.destroy');
     Route::get('/project/bookings/{project}', [ProjectController::class, 'bookings'])->name('project.bookings');
     Route::get('/project/booking/{projectBooking}', [ProjectController::class, 'bookingSeen'])->name('project.seen');
+
+    //jobs
+    Route::get('/jobs', [JobController::class, 'index'])->name('job.index');
+    Route::get('/job/create', [JobController::class, 'create'])->name('job.create');
+    Route::post('/job/store', [JobController::class, 'store'])->name('job.store');
+    Route::get('/job/edit/{job}', [JobController::class, 'edit'])->name('job.edit');
+    Route::post('/job/update/{job}', [JobController::class, 'update'])->name('job.update');
+    Route::delete('/job/delete/{job}', [JobController::class, 'destroy'])->name('job.destroy');
+    Route::get('/job/status/{job}', [JobController::class, 'statusToggle'])->name('job.status');
+    Route::get('/job/applicants/{job}', [JobController::class, 'applicants'])->name('job.applicants');
+    Route::get('/job/applicant/seen/{applicant}', [JobController::class, 'applicantSeen'])->name('applicant.seen');
+
 });
 // admin routes - end

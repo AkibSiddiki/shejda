@@ -34,19 +34,28 @@
             </ul>
         </li>
         <li
-            class="menu-item {{ Route::is('panel.newsEvent.index') || Route::is('panel.newsEvent.create') ? 'active' : '' }}">
+            class="menu-item {{ Route::is('panel.newsEvent.index') || Route::is('panel.newsEvent.create') || Route::is('panel.newsEvent.edit') ? 'active' : '' }}">
             <a href="{{ route('panel.newsEvent.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-news"></i>
                 <div class="text-truncate" data-i18n="News and Event">News and Event</div>
             </a>
         </li>
         <li
-            class="menu-item {{ Route::is('panel.project.index') || Route::is('panel.project.create') ? 'active' : '' }}">
+            class="menu-item {{ Route::is('panel.project.index') || Route::is('panel.project.create') || Route::is('panel.project.edit') ? 'active' : '' }}">
             <a href="{{ route('panel.project.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-buildings"></i>
                 <div class="text-truncate" data-i18n="Projects">Projects</div>
             </a>
         </li>
+        {{-- //jobs --}}
+        <li
+            class="menu-item {{ Route::is('panel.job.index') || Route::is('panel.job.create') || Route::is('panel.job.edit') ? 'active' : '' }}">
+            <a href="{{ route('panel.job.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bxs-briefcase"></i>
+                <div class="text-truncate" data-i18n="Jobs">Jobs</div>
+            </a>
+        </li>
+
         <!-- Layouts -->
         <li class="menu-item">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
