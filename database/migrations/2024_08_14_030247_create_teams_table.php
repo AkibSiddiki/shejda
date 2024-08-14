@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('projects', function (Blueprint $table) {
+        Schema::create('teams', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
+            $table->string('name');
             $table->string('image')->nullable();
-            $table->text('description1')->nullable();
-            $table->text('description2')->nullable();
-            $table->unsignedTinyInteger('property_type')->default(1)->comment('1 = residential, 2 = commercial');
-            $table->unsignedTinyInteger('type')->default(1)->comment('1 = upcoming, 2 = ongoing, 3 = completed');
+            $table->string('position');
+            $table->text('bio')->nullable();
+            $table->string('type')->comment('1 = DIRECTORS, 2 = OFFICERS')->default(1);
             $table->boolean('status')->default(1)->comment('1 = active, 0 = inactive');
             $table->timestamps();
         });
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('projects');
+        Schema::dropIfExists('teams');
     }
 };

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('fname');
             $table->string('lname');
             $table->date('date_of_birth');
-            $table->string('gender');
-            $table->string('Nationality');
+            $table->unsignedTinyInteger('gender')->comment('1 = male, 2 = female', '3 = other');
+            $table->string('nationality');
             $table->string('email');
             $table->string('phone');
             $table->string('cv');

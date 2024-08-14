@@ -68,6 +68,19 @@
                                 @enderror
                             </div>
                         </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="property_type" class="form-label">Property Type<span class="text-danger">*</span></label>
+                                <select class="form-select" id="property_type" name="property_type">
+                                    <option value="1" {{ old('property_type') == 1 ? 'selected' : '' }}>Residential</option>
+                                    <option value="2" {{ old('property_type') == 2 ? 'selected' : '' }}>Commercial</option>
+                                </select>
+                                @error('property_type')
+                                    <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
                         <div class="col-md-12 mt-4">
                             <div class="mb-3">
                                 <label for="type" class="form-label">Type<span class="text-danger">*</span></label>

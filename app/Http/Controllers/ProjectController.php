@@ -35,6 +35,7 @@ class ProjectController extends Controller
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:1024',
             'description1' => 'required|string',
             'description2' => 'required|string',
+            'property_type' => 'required|in:1,2|integer',
             'type' => 'required|in:1,2,3|integer',
         ]);
 
@@ -68,7 +69,8 @@ class ProjectController extends Controller
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:1024',
             'description1' => 'nullable',
             'description2' => 'nullable',
-            'type' => 'required|in:1,2,3',
+            'property_type' => 'nullable|in:1,2',
+            'type' => 'nullable|in:1,2,3',
         ]);
 
         if ($request->hasFile('image')) {
