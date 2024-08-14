@@ -114,18 +114,30 @@
                               <div class="mb-3">
                                 <label class="form-label">Name</label>
                                 <input type="text" class="form-control" name="name" placeholder="Enter your full name here">
+                                @error('name')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                               <div class="mb-3">
                                 <label class="form-label">Email</label>
                                 <input type="email" class="form-control" name="email" placeholder="Enter your email ID here">
+                                @error('email')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                               <div class="mb-3">
                                 <label class="form-label">Contact number</label>
-                                <input type="phone" class="form-control" name="contact" placeholder="Enter your contact number here">
+                                <input type="text" class="form-control" name="phone" placeholder="Enter your contact number here">
+                                @error('phone')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                               <div class="mb-4">
                                 <label class="form-label">Message</label>
                                 <textarea class="form-control" name="message" placeholder="Enter your message here" rows="5"></textarea>
+                                @error('message')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                               </div>
                               <button type="submit" class="common-btn mt-0" href="about-us.php">Book Now</button>
                         </form>
