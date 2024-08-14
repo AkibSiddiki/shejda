@@ -16,36 +16,15 @@
                                 </div>
                             </div>
                         @endforeach
-                        {{-- <div class="items">
-                            <div class="hero-overlay"></div>
-                            <div class="slider-img">
-                                <img class="img-fluid w-100" src="{{ asset('assets/web/image/bg/banner5.webp') }}"
-                                    alt="" title="">
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="hero-overlay"></div>
-                            <div class="slider-img">
-                                <img class="img-fluid w-100" src="{{ asset('assets/web/image/bg/banner3.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                        </div>
-                        <div class="items">
-                            <div class="hero-overlay"></div>
-                            <div class="slider-img">
-                                <img class="img-fluid w-100" src="{{ asset('assets/web/image/bg/banner4.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                        </div> --}}
                     </div>
                 </div>
             </div>
         </div>
         <div class="hero-btn-wrap">
             <div class="hero-btn-content">
-                <a class="btn see-more-btn" href="ongoing.html" target="_blank">Ongoing</a>
-                <a class="btn see-more-btn" href="ongoing.html" target="_blank">Upcoming</a>
-                <a class="btn see-more-btn" href="ongoing.html" target="_blank">Complete</a>
+                <a class="btn see-more-btn" href="{{ route('web.project.list', ['type' => 1, 'p_type' => null]) }}" >Upcoming</a>
+                <a class="btn see-more-btn" href="{{ route('web.project.list', ['type' => 2, 'p_type' => null]) }}" >Ongoing</a>
+                <a class="btn see-more-btn" href="{{ route('web.project.list', ['type' => 3, 'p_type' => null]) }}" >Complete</a>
             </div>
         </div>
     </section>
@@ -61,143 +40,25 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="Hproject-wrap">
-                        <a href="project-details.html">
-                            <div class="hproject-img-wrap">
-                                <img class="img-fluid" src="{{ asset('assets/web/image/bg/project/1627919131g61t1.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                            <div class="hproject-img-text">
-                                <h5>The Sanctum</h5>
-                                <p>Road 81, Gulshan</p>
-                            </div>
-                            <div class="hproject-cat-text">
-                                <h2>Residential</h2>
-                            </div>
-                        </a>
+                @foreach ($projects as $project)
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="Hproject-wrap">
+                            <a href="{{ route('web.project.view', $project) }}">
+                                <div class="hproject-img-wrap">
+                                    <img class="img-fluid" src="{{ asset($project->image) }}"
+                                        alt="{{ $project->title }}" title="{{ $project->title }}">
+                                </div>
+                                <div class="hproject-img-text">
+                                    <h5>{{ $project->title }}</h5>
+                                    <p>{{ $project->location}}</p>
+                                </div>
+                                <div class="hproject-cat-text">
+                                    <h2>{{ $project->property_type== 1 ? 'Residential' : 'Commercial' }}</h2>
+                                </div>
+                            </a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="Hproject-wrap">
-                        <a href="project-details.html">
-                            <div class="hproject-img-wrap">
-                                <img class="img-fluid" src="{{ asset('assets/web/image/bg/project/1633327175LaeLW.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                            <div class="hproject-img-text">
-                                <h5>The Sanctum</h5>
-                                <p>Road 81, Gulshan</p>
-                            </div>
-                            <div class="hproject-cat-text">
-                                <h2>Residential</h2>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="Hproject-wrap">
-                        <a href="project-details.html">
-                            <div class="hproject-img-wrap">
-                                <img class="img-fluid" src="{{ asset('assets/web/image/bg/project/1635247386xAync.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                            <div class="hproject-img-text">
-                                <h5>The Sanctum</h5>
-                                <p>Road 81, Gulshan</p>
-                            </div>
-                            <div class="hproject-cat-text">
-                                <h2>Residential</h2>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="Hproject-wrap">
-                        <a href="project-details.html">
-                            <div class="hproject-img-wrap">
-                                <img class="img-fluid" src="{{ asset('assets/web/image/bg/project/1672824915hEsmI.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                            <div class="hproject-img-text">
-                                <h5>The Sanctum</h5>
-                                <p>Road 81, Gulshan</p>
-                            </div>
-                            <div class="hproject-cat-text">
-                                <h2>Residential</h2>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="Hproject-wrap">
-                        <a href="project-details.html">
-                            <div class="hproject-img-wrap">
-                                <img class="img-fluid" src="{{ asset('assets/web/image/bg/project/1627919131g61t1.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                            <div class="hproject-img-text">
-                                <h5>The Sanctum</h5>
-                                <p>Road 81, Gulshan</p>
-                            </div>
-                            <div class="hproject-cat-text">
-                                <h2>Residential</h2>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="Hproject-wrap">
-                        <a href="project-details.html">
-                            <div class="hproject-img-wrap">
-                                <img class="img-fluid" src="{{ asset('assets/web/image/bg/project/1633327175LaeLW.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                            <div class="hproject-img-text">
-                                <h5>The Sanctum</h5>
-                                <p>Road 81, Gulshan</p>
-                            </div>
-                            <div class="hproject-cat-text">
-                                <h2>Residential</h2>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="Hproject-wrap">
-                        <a href="project-details.html">
-                            <div class="hproject-img-wrap">
-                                <img class="img-fluid" src="{{ asset('assets/web/image/bg/project/1635247386xAync.jpg') }}"
-                                    alt="" title="">
-                            </div>
-                            <div class="hproject-img-text">
-                                <h5>The Sanctum</h5>
-                                <p>Road 81, Gulshan</p>
-                            </div>
-                            <div class="hproject-cat-text">
-                                <h2>Residential</h2>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-4 col-sm-6">
-                    <div class="Hproject-wrap">
-                        <a href="project-details.html">
-                            <div class="hproject-img-wrap">
-                                <img class="img-fluid"
-                                    src="{{ asset('assets/web/image/bg/project/1672824915hEsmI.jpg') }}" alt=""
-                                    title="">
-                            </div>
-                            <div class="hproject-img-text">
-                                <h5>The Sanctum</h5>
-                                <p>Road 81, Gulshan</p>
-                            </div>
-                            <div class="hproject-cat-text">
-                                <h2>Residential</h2>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
         </div>
@@ -390,63 +251,31 @@
                 </div>
                 <div class="col-sm-6 d-flex align-items-end justify-content-sm-end justify-content-start">
                     <div class="section-read-more-btn">
-                        <a href="blog.html">Read More<i class="fa-solid fa-arrow-right-long"></i></a>
+                        <a href="{{ route('web.news.list') }}">Read More<i class="fa-solid fa-arrow-right-long"></i></a>
                     </div>
                 </div>
             </div>
             <div class="blog-content-wrap">
                 <div class="row">
+                    @foreach ($news as $item)
                     <div class="col-lg-4 col-md-6 d-flex">
                         <div class="blog-content align-item-stretch">
-                            <a href="blog-details.html">
+                            <a href="{{ route('web.news.view', $item) }}">
                                 <div class="blog-img">
-                                    <img class="img-fluid" src="{{ asset('assets/web/image/bg/blog1.jpg') }}"
+                                    <img class="img-fluid" src="{{ asset($item->image) }}"
                                         alt="" title="">
                                 </div>
                                 <div class="blog-text-wrap">
-                                    <h3>Is one single solution for all types of roofs possible?</h3>
+                                    <h3>{{ $item->title }}</h3>
                                 </div>
                                 <div class="date-more-btn">
-                                    <p><i class="far fa-calendar-alt"></i>January 7, 2019</p>
-                                    <span href="#">Read More <i class="fa-solid fa-arrow-right-long"></i></span>
+                                    <p><i class="far fa-calendar-alt"></i>{{ $item->created_at->format('d M, Y') }} </p>
+                                    <span href="{{ route('web.news.view', $item) }}">Read More <i class="fa-solid fa-arrow-right-long"></i></span>
                                 </div>
                             </a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 d-flex">
-                        <div class="blog-content align-item-stretch">
-                            <a href="blog-details.html">
-                                <div class="blog-img">
-                                    <img class="img-fluid" src="{{ asset('assets/web/image/bg/blog2.jpg') }}"
-                                        alt="" title="">
-                                </div>
-                                <div class="blog-text-wrap">
-                                    <h3>What are the biggest construction companies</h3>
-                                </div>
-                                <div class="date-more-btn">
-                                    <p><i class="far fa-calendar-alt"></i>November 9, 2018 </p>
-                                    <span href="#">Read More <i class="fa-solid fa-arrow-right-long"></i></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 d-flex">
-                        <div class="blog-content align-item-stretch">
-                            <a href="blog-details.html">
-                                <div class="blog-img">
-                                    <img class="img-fluid" src="{{ asset('assets/web/image/bg/blog4.jpg') }}"
-                                        alt="" title="">
-                                </div>
-                                <div class="blog-text-wrap">
-                                    <h3>Don’t miss this opportunity to innovate your business</h3>
-                                </div>
-                                <div class="date-more-btn">
-                                    <p><i class="far fa-calendar-alt"></i>November 9, 2018</p>
-                                    <span href="#">Read More <i class="fa-solid fa-arrow-right-long"></i></span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

@@ -55,30 +55,85 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label for="description1" class="form-label">Description 1<span
+                                    <label for="description" class="form-label">Description<span
                                             class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="description1" name="description1" rows="3">{{ old('description1') ?? $project->description1 }}</textarea>
-                                    @error('description1')
+                                    <textarea class="form-control" id="description" name="description" rows="3">{{ old('description') ?? $project->description }}</textarea>
+                                    @error('description')
                                         <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label for="description2" class="form-label">Description 2<span
-                                            class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="description2" name="description2" rows="3">{{ old('description2') ?? $project->description2 }}</textarea>
-                                    @error('description2')
+                                    <label for="client" class="form-label">Client</label>
+                                    <input type="text" class="form-control" id="client" name="client"
+                                        value="{{ old('client') ?? $project->client }}">
+                                    @error('client')
                                         <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
                                     @enderror
                                 </div>
                             </div>
                             <div class="col-md-12">
                                 <div class="mb-3">
-                                    <label for="property_type" class="form-label">Property Type<span class="text-danger">*</span></label>
+                                    <label for="architect" class="form-label">Architect</label>
+                                    <input type="text" class="form-control" id="architect" name="architect"
+                                        value="{{ old('architect') ?? $project->architect }}">
+                                    @error('architect')
+                                        <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="location" class="form-label">Location</label>
+                                    <input type="text" class="form-control" id="location" name="location"
+                                        value="{{ old('location') ?? $project->location }}">
+                                    @error('location')
+                                        <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="size" class="form-label">Size</label>
+                                    <input type="text" class="form-control" id="size" name="size"
+                                        value="{{ old('size') ?? $project->size }}">
+                                    @error('size')
+                                        <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="year_completed" class="form-label">Year Completed</label>
+                                    <input type="text" class="form-control" id="year_completed" name="year_completed"
+                                        value="{{ old('year_completed') ?? $project->year_completed }}">
+                                    @error('year_completed')
+                                        <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="categories" class="form-label">Categories</label>
+                                    <input type="text" class="form-control" id="categories" name="categories"
+                                        value="{{ old('categories') ?? $project->categories }}">
+                                    @error('categories')
+                                        <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label for="property_type" class="form-label">Property Type<span
+                                            class="text-danger">*</span></label>
                                     <select class="form-select" id="property_type" name="property_type">
-                                        <option value="1" {{ old('property_type') == 1 ? 'selected' : ($project->property_type == 1 ? 'selected' : '') }}>Residential</option>
-                                        <option value="2" {{ old('property_type') == 2 ? 'selected' : ($project->property_type == 2 ? 'selected' : '') }}>Commercial</option>
+                                        <option value="1"
+                                            {{ old('property_type') == 1 ? 'selected' : ($project->property_type == 1 ? 'selected' : '') }}>
+                                            Residential</option>
+                                        <option value="2"
+                                            {{ old('property_type') == 2 ? 'selected' : ($project->property_type == 2 ? 'selected' : '') }}>
+                                            Commercial</option>
                                     </select>
                                     @error('property_type')
                                         <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
@@ -87,7 +142,8 @@
                             </div>
                             <div class="col-md-12 mt-4">
                                 <div class="mb-3">
-                                    <label for="type" class="form-label">Type<span class="text-danger">*</span></label>
+                                    <label for="type" class="form-label">Type<span
+                                            class="text-danger">*</span></label>
                                     <select class="form-select" id="type" name="type">
                                         <option value="1"
                                             {{ old('type') == 1 ? 'selected' : ($project->type == 1 ? 'selected' : '') }}>

@@ -27,7 +27,7 @@
                 <div class="col-lg-12">
                     <nav class="navbar navbar-expand-lg navbar-light">
                         <div class="container-fluid">
-                            <a class="navbar-brand" href="index.html">
+                            <a class="navbar-brand" href="{{ route('web.home') }}">
                                 <div class="logo">
                                     <img class="img-fluid" src="{{ asset('assets/web/image/bg/logo.png') }}"
                                         alt="" title="">
@@ -41,7 +41,7 @@
                             <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                                 <ul class="navbar-nav">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="">Home</a>
+                                        <a class="nav-link" href="{{ route('web.home') }}">Home</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
@@ -64,13 +64,13 @@
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Projects </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="ongoing.html">Ongoing</a></li>
-                                            <li><a class="dropdown-item" href="ongoing.html">Upcoming</a></li>
-                                            <li><a class="dropdown-item" href="ongoing.html">Complete</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.project.list', ['type' => 1], ['p_type' => null]) }}">Upcoming</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.project.list', ['type' => 2], ['p_type' => null]) }}">Ongoing</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.project.list', ['type' => 3], ['p_type' => null]) }}">Complete</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="blog.html">News & Event</a>
+                                        <a class="nav-link" href="{{ route('web.news.list') }}">News & Event</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="job-post.html">Career</a>

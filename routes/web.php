@@ -10,10 +10,15 @@ use App\Http\Controllers\InfoPageController;
 use App\Http\Controllers\NewsEventController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\JobController;
-
+use App\Http\Controllers\ProjectBookingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
 Route::get('/our-story', [HomeController::class, 'ourStory'])->name('web.ourStory')->middleware('web');
+Route::get('/news-events', [HomeController::class, 'newsList'])->name('web.news.list')->middleware('web');
+Route::get('/news-event/{news}', [HomeController::class, 'newsView'])->name('web.news.view')->middleware('web');
+Route::get('/projects/{type}/{p_type?}', [HomeController::class, 'projectList'])->name('web.project.list')->middleware('web');
+Route::get('/project/{project}', [HomeController::class, 'projectView'])->name('web.project.view')->middleware('web');
+Route::post('/project/booking/store/{project}', [ProjectBookingController::class, 'store'])->name('web.project.booking.store');
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {

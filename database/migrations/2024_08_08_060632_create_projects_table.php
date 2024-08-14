@@ -15,8 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('image')->nullable();
-            $table->text('description1')->nullable();
-            $table->text('description2')->nullable();
+            $table->text('description')->nullable();
+            $table->string('client')->nullable();
+            $table->string('architect')->nullable();
+            $table->string('location')->nullable();
+            $table->string('size')->nullable();
+            $table->string('year_completed')->nullable();
+            $table->string('categories')->nullable();
             $table->unsignedTinyInteger('property_type')->default(1)->comment('1 = residential, 2 = commercial');
             $table->unsignedTinyInteger('type')->default(1)->comment('1 = upcoming, 2 = ongoing, 3 = completed');
             $table->boolean('status')->default(1)->comment('1 = active, 0 = inactive');

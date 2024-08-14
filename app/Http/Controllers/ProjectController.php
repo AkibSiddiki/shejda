@@ -33,8 +33,13 @@ class ProjectController extends Controller
         $validateData = $request->validate([
             'title' => 'required|min:3|max:65',
             'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:1024',
-            'description1' => 'required|string',
-            'description2' => 'required|string',
+            'description' => 'nullable',
+            'client' => 'nullable',
+            'architect' => 'nullable',
+            'location' => 'nullable',
+            'size' => 'nullable',
+            'year_completed' => 'nullable',
+            'categories' => 'nullable',
             'property_type' => 'required|in:1,2|integer',
             'type' => 'required|in:1,2,3|integer',
         ]);
@@ -67,8 +72,13 @@ class ProjectController extends Controller
         $validateData = $request->validate([
             'title' => 'nullable|min:3|max:65',
             'image' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:1024',
-            'description1' => 'nullable',
-            'description2' => 'nullable',
+            'description' => 'nullable',
+            'client' => 'nullable',
+            'architect' => 'nullable',
+            'location' => 'nullable',
+            'size' => 'nullable',
+            'year_completed' => 'nullable',
+            'categories' => 'nullable',
             'property_type' => 'nullable|in:1,2',
             'type' => 'nullable|in:1,2,3',
         ]);

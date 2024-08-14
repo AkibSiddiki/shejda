@@ -362,7 +362,5 @@ const editorConfig = {
 };
 
 ClassicEditor.create(document.querySelector('#content'), editorConfig);
-ClassicEditor.create(document.querySelector('#description1'), editorConfig);
-ClassicEditor.create(document.querySelector('#description2'), editorConfig);
 ClassicEditor.create(document.querySelector('#description'), editorConfig);
 

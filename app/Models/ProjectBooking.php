@@ -9,6 +9,7 @@ class ProjectBooking extends Model
 {
     use HasFactory;
 
+    protected $table = 'project_bookings';
     protected $guarded = [];
 
     public function project()
