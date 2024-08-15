@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Aug 13, 2024 at 04:15 AM
+-- Generation Time: Aug 15, 2024 at 03:48 AM
 -- Server version: 8.0.36
 -- PHP Version: 8.3.7
 
@@ -20,6 +20,36 @@ SET time_zone = "+00:00";
 --
 -- Database: `shejda`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `applicants`
+--
+
+CREATE TABLE `applicants` (
+  `id` bigint UNSIGNED NOT NULL,
+  `job_post_id` bigint UNSIGNED NOT NULL,
+  `fname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `lname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `date_of_birth` date NOT NULL,
+  `gender` tinyint UNSIGNED NOT NULL COMMENT '1 = male, 2 = female',
+  `Nationality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `phone` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `cv` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `is_seen` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1 = seen, 0 = not seen',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 = active, 0 = inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `applicants`
+--
+
+INSERT INTO `applicants` (`id`, `job_post_id`, `fname`, `lname`, `date_of_birth`, `gender`, `Nationality`, `email`, `phone`, `cv`, `is_seen`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Akib', 'Siddiki', '2024-04-11', 1, 'Bangladeshi', 'akib@gmail.com', '01778974170', 'asfdasf.pdf', 0, 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -133,6 +163,39 @@ CREATE TABLE `job_batches` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `job_posts`
+--
+
+CREATE TABLE `job_posts` (
+  `id` bigint UNSIGNED NOT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `type` tinyint UNSIGNED NOT NULL COMMENT '1 = Full time, 2 = Part time, 3 = Internship',
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `salary` int UNSIGNED NOT NULL,
+  `is_negotiable` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1 = negotiable, 0 = fixed',
+  `experience` smallint UNSIGNED NOT NULL COMMENT 'in years',
+  `Expertise` tinyint UNSIGNED NOT NULL COMMENT '1 = Beginner, 2 = Intermediate, 3 = Expert',
+  `due_date` date NOT NULL,
+  `overview` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `responsibilities` text COLLATE utf8mb4_unicode_ci,
+  `required_skills` text COLLATE utf8mb4_unicode_ci,
+  `benefits` text COLLATE utf8mb4_unicode_ci,
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 = active, 0 = inactive',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `job_posts`
+--
+
+INSERT INTO `job_posts` (`id`, `title`, `type`, `location`, `salary`, `is_negotiable`, `experience`, `Expertise`, `due_date`, `overview`, `description`, `responsibilities`, `required_skills`, `benefits`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Laravel Developer 2', 1, 'Dhaka', 4500, 1, 3, 1, '2024-08-25', 'test', NULL, NULL, NULL, NULL, 1, '2024-08-13 13:03:38', '2024-08-13 20:29:46');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `migrations`
 --
 
@@ -149,13 +212,14 @@ CREATE TABLE `migrations` (
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1, '0001_01_01_000000_create_users_table', 1),
 (2, '0001_01_01_000001_create_cache_table', 1),
-(3, '0001_01_01_000002_create_jobs_table', 1),
 (4, '2024_08_04_044818_create_sliders_table', 2),
 (6, '2024_08_06_143359_create_info_pages_table', 3),
-(7, '2024_08_08_060632_create_projects_table', 4),
 (11, '2024_08_08_062503_create_news_events_table', 4),
 (12, '2024_08_08_061703_create_photos_table', 5),
-(13, '2024_08_08_062109_create_project_bookings_table', 6);
+(13, '2024_08_08_062109_create_project_bookings_table', 6),
+(16, '2024_08_13_153449_create_jobs_table', 9),
+(17, '2024_08_13_155451_create_applicants_table', 10),
+(19, '2024_08_08_060632_create_projects_table', 11);
 
 -- --------------------------------------------------------
 
@@ -200,14 +264,6 @@ CREATE TABLE `photos` (
 --
 
 INSERT INTO `photos` (`id`, `project_id`, `image`, `status`, `created_at`, `updated_at`) VALUES
-(1, 1, '/uploads/projects/1723495170.jpg', 1, '2024-08-12 14:39:30', '2024-08-12 14:39:30'),
-(2, 1, '/uploads/projects/1723495170.jpg', 1, '2024-08-12 14:39:30', '2024-08-12 14:39:30'),
-(3, 1, '/uploads/projects/1723495170.jpg', 1, '2024-08-12 14:39:30', '2024-08-12 14:39:30'),
-(4, 1, '/uploads/projects/1723495170.jpg', 1, '2024-08-12 14:39:30', '2024-08-12 14:39:30'),
-(5, 1, '/uploads/projects/1723495170.jpg', 1, '2024-08-12 14:39:30', '2024-08-12 14:39:30'),
-(6, 1, '/uploads/projects/1723495170.jpg', 1, '2024-08-12 14:39:30', '2024-08-12 14:39:30'),
-(7, 1, '/uploads/projects/1723495170.jpg', 1, '2024-08-12 14:39:30', '2024-08-12 14:39:30'),
-(8, 1, '/uploads/projects/1723495170.jpg', 1, '2024-08-12 14:39:30', '2024-08-12 14:39:30'),
 (9, 2, '/uploads/projects/1723495394.jpg', 1, '2024-08-12 14:43:14', '2024-08-12 14:43:14'),
 (10, 2, '/uploads/projects/1723495394.jpg', 1, '2024-08-12 14:43:14', '2024-08-12 14:43:14'),
 (11, 2, '/uploads/projects/1723495394.jpg', 1, '2024-08-12 14:43:14', '2024-08-12 14:43:14'),
@@ -253,7 +309,13 @@ INSERT INTO `photos` (`id`, `project_id`, `image`, `status`, `created_at`, `upda
 (75, 13, '/uploads/photos/1723520432.project-g4.jpg', 1, '2024-08-12 21:40:32', '2024-08-12 21:40:32'),
 (76, 13, '/uploads/photos/1723520432.project-g5.jpg', 1, '2024-08-12 21:40:32', '2024-08-12 21:40:32'),
 (77, 13, '/uploads/photos/1723520432.project-g6.jpg', 1, '2024-08-12 21:40:32', '2024-08-12 21:40:32'),
-(78, 13, '/uploads/photos/1723520432.project-g7.jpg', 1, '2024-08-12 21:40:32', '2024-08-12 21:40:32');
+(78, 13, '/uploads/photos/1723520432.project-g7.jpg', 1, '2024-08-12 21:40:32', '2024-08-12 21:40:32'),
+(80, 1, '/uploads/photos/1723661791.project-g3.jpg', 1, '2024-08-14 12:56:31', '2024-08-14 12:56:31'),
+(81, 1, '/uploads/photos/1723661791.project-g4.jpg', 1, '2024-08-14 12:56:31', '2024-08-14 12:56:31'),
+(82, 1, '/uploads/photos/1723661791.project-g5.jpg', 1, '2024-08-14 12:56:31', '2024-08-14 12:56:31'),
+(83, 1, '/uploads/photos/1723661791.project-g6.jpg', 1, '2024-08-14 12:56:31', '2024-08-14 12:56:31'),
+(84, 1, '/uploads/photos/1723661791.project-g7.jpg', 1, '2024-08-14 12:56:31', '2024-08-14 12:56:31'),
+(85, 1, '/uploads/photos/1723661791.project-g8.jpg', 1, '2024-08-14 12:56:31', '2024-08-14 12:56:31');
 
 -- --------------------------------------------------------
 
@@ -265,8 +327,14 @@ CREATE TABLE `projects` (
   `id` bigint UNSIGNED NOT NULL,
   `title` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `description1` text COLLATE utf8mb4_unicode_ci,
-  `description2` text COLLATE utf8mb4_unicode_ci,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `client` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `architect` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `location` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `size` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `year_completed` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `categories` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `property_type` tinyint UNSIGNED NOT NULL DEFAULT '1' COMMENT '1 = residential, 2 = commercial',
   `type` tinyint UNSIGNED NOT NULL DEFAULT '1' COMMENT '1 = upcoming, 2 = ongoing, 3 = completed',
   `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '1 = active, 0 = inactive',
   `created_at` timestamp NULL DEFAULT NULL,
@@ -277,8 +345,8 @@ CREATE TABLE `projects` (
 -- Dumping data for table `projects`
 --
 
-INSERT INTO `projects` (`id`, `title`, `image`, `description1`, `description2`, `type`, `status`, `created_at`, `updated_at`) VALUES
-(13, 'Project X 2', '/uploads/projects/1723519385.jpg', '<p>test 2</p>', '<p>test 2</p>', 3, 1, '2024-08-12 21:23:05', '2024-08-12 21:45:02');
+INSERT INTO `projects` (`id`, `title`, `image`, `description`, `client`, `architect`, `location`, `size`, `year_completed`, `categories`, `property_type`, `type`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'Project X', '/uploads/projects/1723660014.jpg', '<p>loremn asd asm askjd ajsd a</p><p>asdj askdaskdkaskdloasksdka</p><p>sd asdk asdaksdkakd</p>', 'Dhaka International', 'Sumon Kaiser', 'Dhanmondi 8/A', '65,000 SF', '2018', 'Hospital', 2, 3, 1, '2024-08-14 12:26:54', '2024-08-14 12:27:51');
 
 -- --------------------------------------------------------
 
@@ -304,7 +372,8 @@ CREATE TABLE `project_bookings` (
 --
 
 INSERT INTO `project_bookings` (`id`, `project_id`, `name`, `email`, `phone`, `message`, `status`, `is_seen`, `created_at`, `updated_at`) VALUES
-(1, 13, 'John Doe', 'john@example.com', '1234567890', 'This is a test message', 1, 1, '2024-08-12 21:50:34', '2024-08-12 22:14:02');
+(1, 13, 'John Doe', 'john@example.com', '1234567890', 'This is a test message', 1, 1, '2024-08-12 21:50:34', '2024-08-12 22:14:02'),
+(2, 1, 'Super Admin', 'akib.siddiki@gmail.com', '01778974170', 'hi', 1, 0, '2024-08-14 14:11:04', '2024-08-14 14:11:04');
 
 -- --------------------------------------------------------
 
@@ -361,6 +430,12 @@ INSERT INTO `users` (`id`, `name`, `image`, `username`, `email`, `password`, `ro
 --
 
 --
+-- Indexes for table `applicants`
+--
+ALTER TABLE `applicants`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `cache`
 --
 ALTER TABLE `cache`
@@ -397,6 +472,12 @@ ALTER TABLE `jobs`
 -- Indexes for table `job_batches`
 --
 ALTER TABLE `job_batches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `job_posts`
+--
+ALTER TABLE `job_posts`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -448,6 +529,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `applicants`
+--
+ALTER TABLE `applicants`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `failed_jobs`
 --
 ALTER TABLE `failed_jobs`
@@ -466,10 +553,16 @@ ALTER TABLE `jobs`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `job_posts`
+--
+ALTER TABLE `job_posts`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `news_events`
@@ -481,19 +574,19 @@ ALTER TABLE `news_events`
 -- AUTO_INCREMENT for table `photos`
 --
 ALTER TABLE `photos`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `projects`
 --
 ALTER TABLE `projects`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `project_bookings`
 --
 ALTER TABLE `project_bookings`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `sliders`
