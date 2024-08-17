@@ -1,5 +1,8 @@
 @extends('admin.layout.panel')
 @section('title', 'Edit Info Page')
+@push('css')
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css">
+@endpush
 @section('main')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
@@ -17,7 +20,7 @@
                             <div class="col-md-12">
                                 <div class="mb-3">
                                     <label for="title" class="form-label">Title<span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="title" name="title"
+                                    <input type="text" class="form-control" id="title" name="title" disabled
                                         value="{{ $infoPage->title }}" placeholder="Enter title" />
                                     @error('title')
                                         <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
@@ -101,4 +104,13 @@
             }
         }
     </script>
+    <script type="importmap">
+		{
+			"imports": {
+				"ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
+				"ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
+			}
+		}
+	</script>
+    <script type="module" src="{{ asset('assets/js/ckeditor5.js') }}"></script>
 @endpush

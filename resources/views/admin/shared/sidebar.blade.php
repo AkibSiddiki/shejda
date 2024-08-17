@@ -74,16 +74,9 @@
         </li>
         <li
             class="menu-item">
-            <a href="" class="menu-link">
+            <a href="{{ route('panel.team.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-briefcase"></i>
-                <div class="text-truncate" data-i18n="Jobs">Board of Directors</div>
-            </a>
-        </li>
-        <li
-            class="menu-item">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-briefcase"></i>
-                <div class="text-truncate" data-i18n="Jobs">Management Team</div>
+                <div class="text-truncate" data-i18n="Jobs">Team</div>
             </a>
         </li>
         <li

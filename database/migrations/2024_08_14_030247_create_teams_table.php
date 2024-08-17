@@ -15,8 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->nullable();
-            $table->string('position');
+            $table->string('designation')->nullable();
             $table->text('bio')->nullable();
+            $table->unsignedInteger('position')->default(1);
             $table->string('type')->comment('1 = DIRECTORS, 2 = OFFICERS')->default(1);
             $table->boolean('status')->default(1)->comment('1 = active, 0 = inactive');
             $table->timestamps();

@@ -11,9 +11,15 @@ use App\Http\Controllers\NewsEventController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\ProjectBookingController;
+use App\Http\Controllers\TeamController;
 
 Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
 Route::get('/our-story', [HomeController::class, 'ourStory'])->name('web.ourStory')->middleware('web');
+Route::get('/mission-vision', [HomeController::class, 'missionVision'])->name('web.missionVision')->middleware('web');
+Route::get('/landowners', [HomeController::class, 'landowners'])->name('web.landowners')->middleware('web');
+Route::get('/buyers', [HomeController::class, 'buyers'])->name('web.buyers')->middleware('web');
+Route::get('/customers', [HomeController::class, 'customers'])->name('web.customers')->middleware('web');
+Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('web.contactUs')->middleware('web');
 Route::get('/news-events', [HomeController::class, 'newsList'])->name('web.news.list')->middleware('web');
 Route::get('/news-event/{news}', [HomeController::class, 'newsView'])->name('web.news.view')->middleware('web');
 Route::get('/projects/{type}/{p_type?}', [HomeController::class, 'projectList'])->name('web.project.list')->middleware('web');
@@ -82,6 +88,15 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     Route::get('/job/status/{job}', [JobController::class, 'statusToggle'])->name('job.status');
     Route::get('/job/applicants/{job}', [JobController::class, 'applicants'])->name('job.applicants');
     Route::get('/job/applicant/seen/{applicant}', [JobController::class, 'applicantSeen'])->name('applicant.seen');
+
+    //Team
+    Route::get('/team', [TeamController::class, 'index'])->name('team.index');
+    Route::get('/team/create', [TeamController::class, 'create'])->name('team.create');
+    Route::post('/team/store', [TeamController::class, 'store'])->name('team.store');
+    Route::get('/team/edit/{team}', [TeamController::class, 'edit'])->name('team.edit');
+    Route::post('/team/update/{job}', [TeamController::class, 'update'])->name('team.update');
+    Route::delete('/team/delete/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
+    Route::get('/team/status/{team}', [TeamController::class, 'statusToggle'])->name('team.status');
 
 });
 // admin routes - end

@@ -30,13 +30,40 @@ class HomeController extends Controller
         $why = InfoPage::where('slug', $this->pageSlug[1])->first();
         $projects = Project::orderBy('id', 'desc')->take(8)->get();
         $news = NewsEvent::orderBy('id', 'desc')->take(3)->get();
-        return view('home', compact('sliders', 'welcome', 'why', 'projects', 'news'));
+        $contact = InfoPage::where('slug', 'contact-us')->get()->first();
+        return view('home', compact('sliders', 'welcome', 'why', 'projects', 'news', 'contact'));
     }
 
     public function ourStory()
     {
-        $infoPage = InfoPage::where('slug', 'our-story')->first();
-        return view('our-story', compact('infoPage'));
+        $ourStory = InfoPage::where('slug', 'our-story')->get()->first();
+        return view('our-story', compact('ourStory'));
+    }
+
+    public function missionVision(){
+        $mission = InfoPage::where('slug', 'our-mission')->get()->first();
+        $vision = InfoPage::where('slug', 'our-vision')->get()->first();
+        return view('our-mission-vision', compact('mission', 'vision'));
+    }
+
+    public function landowners(){
+        $landowners = InfoPage::where('slug', 'landowners')->get()->first();
+        return view('landowners', compact('landowners'));
+    }
+
+    public function buyers(){
+        $buyers = InfoPage::where('slug', 'buyers')->get()->first();
+        return view('buyers', compact('buyers'));
+    }
+
+    public function customers(){
+        $customers = InfoPage::where('slug', 'customers')->get()->first();
+        return view('customers', compact('customers'));
+    }
+
+    public function contactUs(){
+        $contact = InfoPage::where('slug', 'contact-us')->get()->first();
+        return view('contact', compact('contact'));
     }
 
     public function newsList(){

@@ -195,7 +195,7 @@
 
                 <div class="col-md-4">
                     <div class="action-box">
-                        <a href="landowners.html">
+                        <a href="{{ route('web.landowners') }}">
                             <span class="action-box-icon">
                                 <i class="fa fa-map-marker"></i>
                             </span>
@@ -209,7 +209,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="action-box">
-                        <a href="buyers.html">
+                        <a href="{{ route('web.buyers') }}">
                             <span class="action-box-icon">
                                 <i class="fa-solid fa-user"></i>
                             </span>
@@ -223,7 +223,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="action-box">
-                        <a href="customar.html">
+                        <a href="{{ route('web.customers') }}">
                             <span class="action-box-icon">
                                 <i class="fa-solid fa-users"></i>
                             </span>
@@ -288,8 +288,8 @@
             <div class="row">
                 <div class="col-md-6 order-md-1 order-2">
                     <div class="contact-img">
-                        <img class="img-fluid" src="{{ asset('assets/web/image/bg/contact-bg.jpg') }}" alt=""
-                            title="">
+                        <img class="img-fluid" src="{{ asset($contact->image1) }}" alt="${{ $contact->title }}"
+                            title="{{ $contact->title }}">
                     </div>
                 </div>
                 <div class="col-md-6 pq-bg-dark-side-right order-md-2 order-1">

@@ -44,13 +44,13 @@
                                         <a class="nav-link" href="{{ route('web.home') }}">Home</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                        <a class="nav-link dropdown-toggle" href="{{ route('web.ourStory') }}" id="navbarDropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false"> About
                                             us </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <li><a class="dropdown-item" href="{{ route('web.ourStory') }}">Our
                                                     Story</a></li>
-                                            <li><a class="dropdown-item" href="visionMission.html">Vision &
+                                            <li><a class="dropdown-item" href="{{ route('web.missionVision') }}">Vision &
                                                     Mission</a></li>
                                             <li><a class="dropdown-item" href="board-of-directors.html">Board of
                                                     Directors</a></li>
@@ -76,14 +76,14 @@
                                         <a class="nav-link" href="job-post.html">Career</a>
                                     </li>
                                     <li class="nav-item dropdown">
-                                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown"
+                                        <a class="nav-link dropdown-toggle" href="{{ route('web.contactUs') }}" id="navbarDropdown"
                                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                             Contact </a>
                                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="landowners.html">landowner</a></li>
-                                            <li><a class="dropdown-item" href="buyers.html">Buyers</a></li>
-                                            <li><a class="dropdown-item" href="customar.html">Customers</a></li>
-                                            <li><a class="dropdown-item" href="contact.html">Contact Us</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.landowners') }}">landowners</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.buyers') }}">Buyers</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.customers') }}">Customers</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.contactUs') }}">Contact Us</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item">

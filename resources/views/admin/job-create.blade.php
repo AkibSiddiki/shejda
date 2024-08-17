@@ -107,7 +107,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="overview" class="form-label">Overview</label>
-                                <textarea class="form-control" id="overview" name="overview" rows="5">{{ old('overview') }}</textarea>
+                                <textarea class="form-control content" id="overview" name="overview" rows="5">{{ old('overview') }}</textarea>
                                 @error('overview')
                                     <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
                                 @enderror
@@ -125,7 +125,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="responsibilities" class="form-label">Responsibilities</label>
-                                <textarea class="form-control" id="responsibilities" name="responsibilities" rows="5">{{ old('responsibilities') }}</textarea>
+                                <textarea class="form-control content" id="responsibilities" name="responsibilities" rows="5">{{ old('responsibilities') }}</textarea>
                                 @error('responsibilities')
                                     <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
                                 @enderror
@@ -134,7 +134,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="required_skills" class="form-label">Required Skills</label>
-                                <textarea class="form-control" id="required_skills" name="required_skills" rows="5">{{ old('required_skills') }}</textarea>
+                                <textarea class="form-control content" id="required_skills" name="required_skills" rows="5">{{ old('required_skills') }}</textarea>
                                 @error('required_skills')
                                     <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
                                 @enderror
@@ -143,7 +143,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="benefits" class="form-label">Benefits</label>
-                                <textarea class="form-control" id="benefits" name="benefits" rows="5">{{ old('benefits') }}</textarea>
+                                <textarea class="form-control content" id="benefits" name="benefits" rows="5">{{ old('benefits') }}</textarea>
                                 @error('benefits')
                                     <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
                                 @enderror
@@ -170,7 +170,14 @@
 @endSection
 
 @push('js')
-    <script type="importmap" src="{{ asset('assets/js/ckeditor5.js') }}">
-    </script>
+<script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
+            "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
+        }
+    }
+</script>
+<script type="module" src="{{ asset('assets/js/ckeditor5.js') }}"></script>
 
 @endpush

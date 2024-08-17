@@ -362,5 +362,10 @@ const editorConfig = {
 };
 
 ClassicEditor.create(document.querySelector('#content'), editorConfig);
+ClassicEditor.create(document.querySelector('#overview'), editorConfig);
 ClassicEditor.create(document.querySelector('#description'), editorConfig);
+ClassicEditor.create(document.querySelector('#benefits'), editorConfig);
+ClassicEditor.create(document.querySelector('#required_skills'), editorConfig);
+ClassicEditor.create(document.querySelector('#responsibilities'), editorConfig);
+
 

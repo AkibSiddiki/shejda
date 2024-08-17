@@ -170,8 +170,15 @@
 @endSection
 
 @push('js')
-    <script type="importmap" src="{{ asset('assets/js/ckeditor5.js') }}">
-    </script>
+<script type="importmap">
+    {
+        "imports": {
+            "ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
+            "ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
+        }
+    }
+</script>
+<script type="module" src="{{ asset('assets/js/ckeditor5.js') }}"></script>
 
 @endpush
 

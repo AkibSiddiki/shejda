@@ -29,13 +29,13 @@
                                     <h2 class="footer-widget__title">Quick Links</h2>
                                     <ul class="footer-widget__quick-links-list">
                                         <li class="footer-widget__quick-links-list-item"><a
-                                                href="our-story.html">About</a></li>
+                                                href="{{ route('web.ourStory') }}">About</a></li>
                                         <li class="footer-widget__quick-links-list-item"><a
-                                                href="visionMission.html">Mission & Vision</a></li>
+                                                href="{{ route('web.missionVision') }}">Mission & Vision</a></li>
                                         <li class="footer-widget__quick-links-list-item"><a
-                                                href="job-post.html">Career</a></li>
+                                                href="#">Career</a></li>
                                         <li class="footer-widget__quick-links-list-item"><a
-                                                href="contact.html">Contact</a></li>
+                                                href="{{ route('web.contactUs') }}">Contact</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -75,7 +75,7 @@
                         </div>
                         <div class="footer-one__bottom-list">
                             <ul>
-                                <li><a href="#">About us</a></li>
+                                <li><a href="{{ route('web.ourStory') }}">About us</a></li>
                                 <li><a href="#"> Careers</a></li>
                                 <li><a href="#">Privacy Policy</a></li>
                             </ul>
