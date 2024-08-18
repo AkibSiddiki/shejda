@@ -52,11 +52,11 @@
                                                     Story</a></li>
                                             <li><a class="dropdown-item" href="{{ route('web.missionVision') }}">Vision &
                                                     Mission</a></li>
-                                            <li><a class="dropdown-item" href="board-of-directors.html">Board of
+                                            <li><a class="dropdown-item" href="{{ route('web.boardOfDirectors') }}">Board of
                                                     Directors</a></li>
-                                            <li><a class="dropdown-item" href="management-team.html">Management
+                                            <li><a class="dropdown-item" href="{{ route('web.managementTeam') }}">Management
                                                     Team</a></li>
-                                            <li><a class="dropdown-item" href="clients.html">Our Clients</a></li>
+                                            <li><a class="dropdown-item" href="#">Our Clients</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item dropdown">

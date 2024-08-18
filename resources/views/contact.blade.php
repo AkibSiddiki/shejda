@@ -31,26 +31,36 @@
                             <h2>Fill the form and send <span>your query</span></h2>
                         </div>
                         <div class="contact-input">
-                            <div class="form">
+                            <form class="form" action="{{ route('web.message.store') }}" method="POST">
+                                @csrf
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <div class="mb-4">
                                             <input type="text" name="name" class="form-control" placeholder="Full name" autofocus="">
+                                            @error('name')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <div class="mb-4">
                                             <input type="email" name="email" class="form-control" placeholder="Email Addresss">
+                                            @error('email')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="">
-                                            <textarea class="form-control" placeholder="Message Details" rows="5"></textarea>
+                                            <textarea name="message" class="form-control" placeholder="Message Details" rows="5"></textarea>
+                                            @error('message')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
-                                <a class="btn common-btn mt-4" href="#">Submit</a>
-                            </div>
+                                <button type="submit" class="btn common-btn mt-4">Submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>
