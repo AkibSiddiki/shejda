@@ -25,8 +25,22 @@
         <li
             class="menu-item {{ Route::is('panel.slider.index') || Route::is('panel.slider.create') || Route::is('panel.slider.edit') ? 'active' : '' }}">
             <a href="{{ route('panel.slider.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book-content"></i>
+                <i class="menu-icon tf-icons bx bx-slideshow"></i>
                 <div class="text-truncate" data-i18n="Home Silder">Home Silder</div>
+            </a>
+        </li>
+        <li
+            class="menu-item">
+            <a href="{{ route('panel.team.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user-voice"></i>
+                <div class="text-truncate" data-i18n="Jobs">Team</div>
+            </a>
+        </li>
+        <li
+            class="menu-item">
+            <a href="{{ route('panel.client.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-shape-circle"></i>
+                <div class="text-truncate" data-i18n="Jobs">Clients</div>
             </a>
         </li>
         <li
@@ -39,7 +53,7 @@
         <li
             class="menu-item {{ Route::is('panel.project.index') || Route::is('panel.project.create') || Route::is('panel.project.edit') ? 'active' : '' }}">
             <a href="{{ route('panel.project.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-buildings"></i>
+                <i class="menu-icon tf-icons bx bx-buildings"></i>
                 <div class="text-truncate" data-i18n="Projects">Projects</div>
             </a>
         </li>
@@ -47,49 +61,40 @@
         <li
             class="menu-item {{ Route::is('panel.job.index') || Route::is('panel.job.create') || Route::is('panel.job.edit') ? 'active' : '' }}">
             <a href="{{ route('panel.job.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-briefcase"></i>
+                <i class="menu-icon tf-icons bx bx-briefcase"></i>
                 <div class="text-truncate" data-i18n="Jobs">Jobs</div>
             </a>
         </li>
         <li
             class="menu-item">
             <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-briefcase"></i>
+                <i class='menu-icon tf-icons bx bxs-landmark'></i>
                 <div class="text-truncate" data-i18n="Jobs">Landowners</div>
             </a>
         </li>
         <li
             class="menu-item">
             <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-briefcase"></i>
+                <i class="menu-icon tf-icons bx bx-conversation"></i>
                 <div class="text-truncate" data-i18n="Jobs">Buyers</div>
             </a>
         </li>
+        @php
+            $unread = \App\Models\Message::where('is_seen', 0)->count();
+        @endphp
         <li
             class="menu-item">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-briefcase"></i>
+            <a href="{{ route('panel.message.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-comment-dots"></i>
                 <div class="text-truncate" data-i18n="Jobs">Contact Us</div>
+                @if($unread > 0)<span class="badge rounded-pill bg-danger ms-auto">{{ $unread }}</span>@endif
             </a>
         </li>
-        <li
-            class="menu-item">
-            <a href="{{ route('panel.team.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-briefcase"></i>
-                <div class="text-truncate" data-i18n="Jobs">Team</div>
-            </a>
-        </li>
-        <li
-            class="menu-item">
-            <a href="" class="menu-link">
-                <i class="menu-icon tf-icons bx bxs-briefcase"></i>
-                <div class="text-truncate" data-i18n="Jobs">Clients</div>
-            </a>
-        </li>
+
         <!-- Pages -->
-        <li class="menu-item {{ request()->routeIs('panel.account*') ? 'active open' : '' }}">
+        <li class="menu-item mt-auto mb-4 {{ request()->routeIs('panel.account*') ? 'active open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-dock-top"></i>
+                <i class="menu-icon tf-icons bx bxs-cog"></i>
                 <div class="text-truncate" data-i18n="Account Settings">Account Settings</div>
             </a>
             <ul class="menu-sub">
@@ -98,11 +103,11 @@
                         <div class="text-truncate" data-i18n="Account">Account</div>
                     </a>
                 </li>
-                <li class="menu-item">
+                {{-- <li class="menu-item">
                     <a href="#" class="menu-link">
                         <div class="text-truncate" data-i18n="Notifications">Users List</div>
                     </a>
-                </li>
+                </li> --}}
             </ul>
         </li>
     </ul>

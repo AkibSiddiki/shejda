@@ -56,7 +56,7 @@
                                                     Directors</a></li>
                                             <li><a class="dropdown-item" href="{{ route('web.managementTeam') }}">Management
                                                     Team</a></li>
-                                            <li><a class="dropdown-item" href="#">Our Clients</a></li>
+                                            <li><a class="dropdown-item" href="{{ route('web.clients') }}">Our Clients</a></li>
                                         </ul>
                                     </li>
                                     <li class="nav-item dropdown">
@@ -73,7 +73,7 @@
                                         <a class="nav-link" href="{{ route('web.news.list') }}">News & Event</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="job-post.html">Career</a>
+                                        <a class="nav-link" href="{{ route('web.job.list') }}">Career</a>
                                     </li>
                                     <li class="nav-item dropdown">
                                         <a class="nav-link dropdown-toggle" href="{{ route('web.contactUs') }}" id="navbarDropdown"

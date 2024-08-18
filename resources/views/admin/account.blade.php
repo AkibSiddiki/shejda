@@ -15,9 +15,9 @@
                                 href="javascript:void(0);"><i class="bx bx-sm bx-user me-1_5"></i>
                                 Account</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#"><i class="bx bx-sm bxs-contact me-1_5"></i> Users</a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
                 <div class="card mb-6">

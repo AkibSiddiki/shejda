@@ -13,6 +13,7 @@ use App\Http\Controllers\JobController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProjectBookingController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\ClientController;
 
 Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
 Route::get('/our-story', [HomeController::class, 'ourStory'])->name('web.ourStory')->middleware('web');
@@ -29,6 +30,10 @@ Route::post('/project/booking/store/{project}', [ProjectBookingController::class
 Route::get('/board-of-directors', [HomeController::class, 'boardOfDirectors'])->name('web.boardOfDirectors')->middleware('web');
 Route::get('/management-team', [HomeController::class, 'managementTeam'])->name('web.managementTeam')->middleware('web');
 Route::post('/message/store', [MessageController::class, 'store'])->name('web.message.store');
+Route::get('/clients', [HomeController::class, 'clients'])->name('web.clients')->middleware('web');
+Route::get('/jobs', [HomeController::class, 'jobList'])->name('web.job.list')->middleware('web');
+Route::get('/job/{job}', [HomeController::class, 'jobView'])->name('web.job.view')->middleware('web');
+Route::post('/job/apply/{job}', [HomeController::class, 'jobApply'])->name('web.job.apply')->middleware('web');
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {
@@ -101,6 +106,20 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     Route::post('/team/update/{team}', [TeamController::class, 'update'])->name('team.update');
     Route::delete('/team/delete/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
     Route::get('/team/status/{team}', [TeamController::class, 'statusToggle'])->name('team.status');
+
+    //Contact list
+    Route::get('/messages', [MessageController::class, 'index'])->name('message.index');
+    Route::get('/message/seen/{message}', [MessageController::class, 'messageSeen'])->name('message.seen');
+
+    //Client
+    Route::get('/clients', [ClientController::class, 'index'])->name('client.index');
+    Route::get('/client/create', [ClientController::class, 'create'])->name('client.create');
+    Route::post('/client/store', [ClientController::class, 'store'])->name('client.store');
+    Route::get('/client/edit/{client}', [ClientController::class, 'edit'])->name('client.edit');
+    Route::post('/client/update/{client}', [ClientController::class, 'update'])->name('client.update');
+    Route::get('/client/status/{client}', [ClientController::class, 'statusToggle'])->name('client.status');
+    Route::delete('/client/delete/{client}', [ClientController::class, 'destroy'])->name('client.destroy');
+
 
 });
 // admin routes - end

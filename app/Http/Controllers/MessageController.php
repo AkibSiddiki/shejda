@@ -7,6 +7,11 @@ use App\Models\Message;
 
 class MessageController extends Controller
 {
+    public function index()
+    {
+        $messages = Message::orderBy('created_at', 'desc')->paginate(15);
+        return view('admin.messages-index', compact('messages'));
+    }
 
     public function store(Request $request)
     {
@@ -23,5 +28,12 @@ class MessageController extends Controller
         $message->save();
 
         return redirect()->back()->with('success', 'Message sent successfully');
+    }
+
+    public function messageSeen(Message $message)
+    {
+        $message->is_seen = 1;
+        $message->save();
+        return redirect()->back();
     }
 }

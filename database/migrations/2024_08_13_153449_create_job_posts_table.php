@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedInteger('salary');
             $table->boolean('is_negotiable')->default(0)->comment('1 = negotiable, 0 = fixed');
             $table->unsignedSmallInteger('experience')->comment('in years');
-            $table->unsignedTinyInteger('Expertise')->comment('1 = Beginner, 2 = Intermediate, 3 = Expert');
+            $table->unsignedTinyInteger('expertise')->comment('1 = Beginner, 2 = Intermediate, 3 = Expert');
             $table->date('due_date');
             $table->text('overview')->nullable();
             $table->text('description')->nullable();
