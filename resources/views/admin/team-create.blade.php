@@ -1,5 +1,8 @@
 @extends('admin.layout.panel')
 @section('title', 'Create Team')
+@push('css')
+    <link rel="stylesheet" href="https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.css">
+@endpush
 @section('main')
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
@@ -23,24 +26,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-12">
-                            <div class="mb-3">
-                                <label for="image" class="form-label">Image</label>
-                                <p class="form-text text-warning my-1">The maximum file size allowed is 1 megabyte (MB).</p>
-                                <div class="input-group">
-                                    <input type="file" class="form-control" id="image" name="image"
-                                        accept="image/*" onchange="loadFile(event)" />
-                                    <span class="input-group-text" id="upload-image"><i class="bx bx-upload"></i></span>
-                                </div>
-                                <div class="mt-2">
-                                    <img id="previewImage" src="{{ asset('assets/img/no-image.jpg') }}"
-                                        class="img-fluid w-20" alt="image preview" />
-                                </div>
-                                @error('image')
-                                    <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
-                                @enderror
-                            </div>
-                        </div>
+
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="designation" class="form-label">Designation</label>
@@ -61,7 +47,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="position" class="form-label">Position</label>
                                 <input type="number" class="form-control" id="position" name="position"
@@ -71,7 +57,7 @@
                                 @enderror
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="type" class="form-label">Type</label>
                                 <select class="form-select" id="type" name="type">
@@ -79,6 +65,24 @@
                                     <option value="2" {{ old('type') == 2 ? 'selected' : '' }}>OFFICERS</option>
                                 </select>
                                 @error('type')
+                                    <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label for="image" class="form-label">Image</label>
+                                <p class="form-text text-warning my-1">The maximum file size allowed is 1 megabyte (MB).</p>
+                                <div class="input-group">
+                                    <input type="file" class="form-control" id="image" name="image"
+                                        accept="image/*" onchange="loadFile(event)" />
+                                    <span class="input-group-text" id="upload-image"><i class="bx bx-upload"></i></span>
+                                </div>
+                                <div class="mt-2">
+                                    <img id="previewImage" src="{{ asset('assets/img/no-image.jpg') }}"
+                                        class="img-fluid w-20" alt="image preview" />
+                                </div>
+                                @error('image')
                                     <small class="mt-3 d-block text-small text-danger">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -102,5 +106,14 @@
             }
         }
     </script>
+    <script type="importmap">
+		{
+			"imports": {
+				"ckeditor5": "https://cdn.ckeditor.com/ckeditor5/43.0.0/ckeditor5.js",
+				"ckeditor5/": "https://cdn.ckeditor.com/ckeditor5/43.0.0/"
+			}
+		}
+	</script>
+    <script type="module" src="{{ asset('assets/js/ckeditor5.js') }}"></script>
 @endpush
 

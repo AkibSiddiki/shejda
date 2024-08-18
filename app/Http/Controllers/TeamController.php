@@ -19,7 +19,7 @@ class TeamController extends Controller
     public function store(Request $request){
         $validateData = request()->validate([
             'name' => 'required|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
             'designation' => 'nullable|string|max:255',
             'bio' => 'nullable|string',
             'position' => 'required|integer|min:1',
@@ -46,12 +46,13 @@ class TeamController extends Controller
     public function update(Request $request, Team $team){
         $validateData = request()->validate([
             'name' => 'nullable|string|max:255',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
             'designation' => 'nullable|string|max:255',
             'bio' => 'nullable|string',
             'position' => 'nullable|integer|min:1',
             'type' => 'nullable|string|in:1,2',
         ]);
+
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');

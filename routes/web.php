@@ -25,6 +25,8 @@ Route::get('/news-event/{news}', [HomeController::class, 'newsView'])->name('web
 Route::get('/projects/{type}/{p_type?}', [HomeController::class, 'projectList'])->name('web.project.list')->middleware('web');
 Route::get('/project/{project}', [HomeController::class, 'projectView'])->name('web.project.view')->middleware('web');
 Route::post('/project/booking/store/{project}', [ProjectBookingController::class, 'store'])->name('web.project.booking.store');
+Route::get('/board-of-directors', [HomeController::class, 'boardOfDirectors'])->name('web.boardOfDirectors')->middleware('web');
+Route::get('/management-team', [HomeController::class, 'managementTeam'])->name('web.managementTeam')->middleware('web');
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {
@@ -94,7 +96,7 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     Route::get('/team/create', [TeamController::class, 'create'])->name('team.create');
     Route::post('/team/store', [TeamController::class, 'store'])->name('team.store');
     Route::get('/team/edit/{team}', [TeamController::class, 'edit'])->name('team.edit');
-    Route::post('/team/update/{job}', [TeamController::class, 'update'])->name('team.update');
+    Route::post('/team/update/{team}', [TeamController::class, 'update'])->name('team.update');
     Route::delete('/team/delete/{team}', [TeamController::class, 'destroy'])->name('team.destroy');
     Route::get('/team/status/{team}', [TeamController::class, 'statusToggle'])->name('team.status');
 

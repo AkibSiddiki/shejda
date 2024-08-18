@@ -7,6 +7,7 @@ use App\Models\Slider;
 use App\Models\InfoPage;
 use App\Models\NewsEvent;
 use App\Models\Project;
+use App\Models\Team;
 
 class HomeController extends Controller
 {
@@ -44,6 +45,16 @@ class HomeController extends Controller
         $mission = InfoPage::where('slug', 'our-mission')->get()->first();
         $vision = InfoPage::where('slug', 'our-vision')->get()->first();
         return view('our-mission-vision', compact('mission', 'vision'));
+    }
+
+    public function boardOfDirectors(){
+        $directors = Team::where('type', 1)->orderBy('position', 'ASC')->get();
+        return view('board-of-directors', compact('directors'));
+    }
+
+    public function managementTeam(){
+        $managements = Team::where('type', 2)->orderBy('position', 'ASC')->get();
+        return view('management-team', compact('managements'));
     }
 
     public function landowners(){
