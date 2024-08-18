@@ -10,6 +10,7 @@ use App\Http\Controllers\InfoPageController;
 use App\Http\Controllers\NewsEventController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\JobController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProjectBookingController;
 use App\Http\Controllers\TeamController;
 
@@ -27,6 +28,7 @@ Route::get('/project/{project}', [HomeController::class, 'projectView'])->name('
 Route::post('/project/booking/store/{project}', [ProjectBookingController::class, 'store'])->name('web.project.booking.store');
 Route::get('/board-of-directors', [HomeController::class, 'boardOfDirectors'])->name('web.boardOfDirectors')->middleware('web');
 Route::get('/management-team', [HomeController::class, 'managementTeam'])->name('web.managementTeam')->middleware('web');
+Route::post('/message/store', [MessageController::class, 'store'])->name('web.message.store');
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {

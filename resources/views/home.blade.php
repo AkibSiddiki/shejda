@@ -22,9 +22,12 @@
         </div>
         <div class="hero-btn-wrap">
             <div class="hero-btn-content">
-                <a class="btn see-more-btn" href="{{ route('web.project.list', ['type' => 1, 'p_type' => null]) }}" >Upcoming</a>
-                <a class="btn see-more-btn" href="{{ route('web.project.list', ['type' => 2, 'p_type' => null]) }}" >Ongoing</a>
-                <a class="btn see-more-btn" href="{{ route('web.project.list', ['type' => 3, 'p_type' => null]) }}" >Complete</a>
+                <a class="btn see-more-btn"
+                    href="{{ route('web.project.list', ['type' => 1, 'p_type' => null]) }}">Upcoming</a>
+                <a class="btn see-more-btn"
+                    href="{{ route('web.project.list', ['type' => 2, 'p_type' => null]) }}">Ongoing</a>
+                <a class="btn see-more-btn"
+                    href="{{ route('web.project.list', ['type' => 3, 'p_type' => null]) }}">Complete</a>
             </div>
         </div>
     </section>
@@ -45,15 +48,15 @@
                         <div class="Hproject-wrap">
                             <a href="{{ route('web.project.view', $project) }}">
                                 <div class="hproject-img-wrap">
-                                    <img class="img-fluid" src="{{ asset($project->image) }}"
-                                        alt="{{ $project->title }}" title="{{ $project->title }}">
+                                    <img class="img-fluid" src="{{ asset($project->image) }}" alt="{{ $project->title }}"
+                                        title="{{ $project->title }}">
                                 </div>
                                 <div class="hproject-img-text">
                                     <h5>{{ $project->title }}</h5>
-                                    <p>{{ $project->location}}</p>
+                                    <p>{{ $project->location }}</p>
                                 </div>
                                 <div class="hproject-cat-text">
-                                    <h2>{{ $project->property_type== 1 ? 'Residential' : 'Commercial' }}</h2>
+                                    <h2>{{ $project->property_type == 1 ? 'Residential' : 'Commercial' }}</h2>
                                 </div>
                             </a>
                         </div>
@@ -70,10 +73,10 @@
             <div class="row">
                 <div class="col-md-6 order-2 order-sm-1">
                     <div class="about-us-img">
-                        <img class="aboutImgOne img-fluid" src="{{ asset($welcome->image1) }}"
-                            alt="{{ $welcome->title }}" title="{{ $welcome->title }}">
-                        <img class="aboutImgTwo img-fluid" src="{{ asset($welcome->image2) }}"
-                            alt="{{ $welcome->title }}" title="{{ $welcome->title }}">
+                        <img class="aboutImgOne img-fluid" src="{{ asset($welcome->image1) }}" alt="{{ $welcome->title }}"
+                            title="{{ $welcome->title }}">
+                        <img class="aboutImgTwo img-fluid" src="{{ asset($welcome->image2) }}" alt="{{ $welcome->title }}"
+                            title="{{ $welcome->title }}">
                     </div>
                 </div>
                 <div class="col-md-6 ps-xl-5 order-1 order-sm-2">
@@ -140,8 +143,8 @@
                                 <div class="feature-block-one align-self-stretch">
                                     <div class="inner-box">
                                         <div class="icon-box-img"><img class="img-fluid"
-                                                src="{{ asset('assets/web/image/icon/scratch-proof.png') }}"
-                                                alt="" title="">
+                                                src="{{ asset('assets/web/image/icon/scratch-proof.png') }}" alt=""
+                                                title="">
                                         </div>
                                         <h3>Uncompromising Safety</h3>
                                     </div>
@@ -258,23 +261,25 @@
             <div class="blog-content-wrap">
                 <div class="row">
                     @foreach ($news as $item)
-                    <div class="col-lg-4 col-md-6 d-flex">
-                        <div class="blog-content align-item-stretch">
-                            <a href="{{ route('web.news.view', $item) }}">
-                                <div class="blog-img">
-                                    <img class="img-fluid" src="{{ asset($item->image) }}"
-                                        alt="" title="">
-                                </div>
-                                <div class="blog-text-wrap">
-                                    <h3>{{ $item->title }}</h3>
-                                </div>
-                                <div class="date-more-btn">
-                                    <p><i class="far fa-calendar-alt"></i>{{ $item->created_at->format('d M, Y') }} </p>
-                                    <span href="{{ route('web.news.view', $item) }}">Read More <i class="fa-solid fa-arrow-right-long"></i></span>
-                                </div>
-                            </a>
+                        <div class="col-lg-4 col-md-6 d-flex">
+                            <div class="blog-content align-item-stretch">
+                                <a href="{{ route('web.news.view', $item) }}">
+                                    <div class="blog-img">
+                                        <img class="img-fluid" src="{{ asset($item->image) }}" alt=""
+                                            title="">
+                                    </div>
+                                    <div class="blog-text-wrap">
+                                        <h3>{{ $item->title }}</h3>
+                                    </div>
+                                    <div class="date-more-btn">
+                                        <p><i class="far fa-calendar-alt"></i>{{ $item->created_at->format('d M, Y') }}
+                                        </p>
+                                        <span href="{{ route('web.news.view', $item) }}">Read More <i
+                                                class="fa-solid fa-arrow-right-long"></i></span>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
-                    </div>
                     @endforeach
                 </div>
             </div>
@@ -298,34 +303,38 @@
                             <h2>Send your <span>Message</span></h2>
                         </div>
                         <div class="contact-input">
-                            <div class="form">
+                            <form class="form" action="{{ route('web.message.store') }}" method="post">
+                                @csrf
                                 <div class="row">
-                                    <div class="col">
+                                    <div class="col-sm-6">
                                         <div class="mb-4">
                                             <input type="text" name="name" class="form-control"
-                                                placeholder="First name">
+                                                placeholder="Full Name">
+                                            @error('name')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
-                                    <div class="col">
-                                        <div class="mb-4">
-                                            <input type="text" name="name" class="form-control"
-                                                placeholder="Last name">
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
+                                    <div class="col-sm-6">
                                         <div class="mb-4">
                                             <input type="email" name="email" class="form-control"
                                                 placeholder="Email Addresss">
+                                            @error('email')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
                                         <div class="">
-                                            <textarea class="form-control" placeholder="Message Details" rows="5"></textarea>
+                                            <textarea name="message" class="form-control" placeholder="Message Details" rows="5"></textarea>
+                                            @error('message')
+                                                <p class="text-danger">{{ $message }}</p>
+                                            @enderror
                                         </div>
                                     </div>
                                 </div>
-                                <a class="btn common-btn mt-4" href="#">Submit</a>
-                            </div>
+                                <button type="submit" class="btn common-btn mt-4">Submit</button>
+                            </form>
                         </div>
                     </div>
                 </div>
