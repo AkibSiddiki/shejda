@@ -179,5 +179,4 @@
     }
 </script>
 <script type="module" src="{{ asset('assets/js/ckeditor5.js') }}"></script>
-
 @endpush

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Applicant;
 use Illuminate\Http\Request;
 use App\Models\Slider;
 use App\Models\InfoPage;
@@ -117,27 +118,32 @@ class HomeController extends Controller
         return view('job-view', compact('job'));
     }
 
-    public function jobApply(Job $job, Request $request){
-        $data = $request->validate([
-            'name' => 'required',
+    public function jobApply(Job $job){
+        return view('job-apply', compact('job'));
+    }
+
+    public function jobApplyStore(Request $request, Job $job){
+        $validateData = $request->validate([
+            'fname' => 'required',
+            'lname' => 'required',
+            'date_of_birth' => 'required|date',
+            'gender' => 'required',
+            'nationality' => 'required',
             'email' => 'required|email',
             'phone' => 'required',
-            'cv' => 'required|mimes:pdf,docx,doc'
+            'cv' => 'required|mimes:pdf,doc,docx|max:2048',
         ]);
 
-        $file = $request->file('cv');
-        $filename = $file->getClientOriginalName();
-        $file->storeAs('public/jobs', $filename);
+        $cv = $request->file('cv');
+        $cv_name = $validateData['fname'] . '-' . $validateData['lname'] . '-' . time() . '.' . $cv->getClientOriginalExtension();
+        $destinationPath = public_path('/uploads/cv');
+        $cv->move($destinationPath, $cv_name);
+        $validateData['cv'] = '/uploads/cv/' . $cv_name;
 
-        Job::create([
-            'job_id' => $job->id,
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'phone' => $data['phone'],
-            'cv' => $filename
-        ]);
+        $validateData['job_post_id'] = $job->id;
+        Applicant::create($validateData);
 
-        session()->flash('success', 'Application sent successfully');
-        return redirect()->back();
+        return redirect()->route('web.job.list')->with('success', 'Applicant created successfully.');
     }
+
 }

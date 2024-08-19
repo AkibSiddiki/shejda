@@ -33,7 +33,8 @@ Route::post('/message/store', [MessageController::class, 'store'])->name('web.me
 Route::get('/clients', [HomeController::class, 'clients'])->name('web.clients')->middleware('web');
 Route::get('/jobs', [HomeController::class, 'jobList'])->name('web.job.list')->middleware('web');
 Route::get('/job/{job}', [HomeController::class, 'jobView'])->name('web.job.view')->middleware('web');
-Route::post('/job/apply/{job}', [HomeController::class, 'jobApply'])->name('web.job.apply')->middleware('web');
+Route::get('/job/apply/{job}', [HomeController::class, 'jobApply'])->name('web.job.apply')->middleware('web');
+Route::post('/job/apply/store/{job}', [HomeController::class, 'jobApplyStore'])->name('web.job.apply.store');
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {
