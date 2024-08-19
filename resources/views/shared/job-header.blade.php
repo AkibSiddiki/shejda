@@ -7,7 +7,7 @@
             <h1>Career</h1>
             <ul>
               <li>
-                <a href="index.html">Home</a>
+                <a href="{{ route('web.home') }}">Home</a>
               </li>
               <li>Career</li>
             </ul>

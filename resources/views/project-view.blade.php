@@ -7,6 +7,9 @@
             <div class="row">
                 <div class="proejct-details-text">
                     <div class="row">
+                        <div class="col-12">
+                            @include('shared.success')
+                        </div>
                         <div class="col-lg-5 col-md-6">
                             <div class="proejct-details-img">
                                 <img class="img-fluid w-100" src="{{ asset($project->image) }}" alt="{{ $project->title }}"

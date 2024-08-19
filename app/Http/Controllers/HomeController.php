@@ -119,10 +119,16 @@ class HomeController extends Controller
     }
 
     public function jobApply(Job $job){
+        if($job->due_date <= date('Y-m-d')){
+            abort(404);
+        }
         return view('job-apply', compact('job'));
     }
 
     public function jobApplyStore(Request $request, Job $job){
+        if ($job->due_date <= date('Y-m-d')) {
+            return redirect()->back()->with('error', 'Sorry, this job has expired.');
+        }
         $validateData = $request->validate([
             'fname' => 'required',
             'lname' => 'required',

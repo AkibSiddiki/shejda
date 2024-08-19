@@ -42,7 +42,7 @@
                 </div>
                 @endforeach
                 <div class="col-12">
-                    <div class="pagination-wrap">
+                    <div class="my-4">
                         {{ $projects->links() }}
                     </div>
                 </div>

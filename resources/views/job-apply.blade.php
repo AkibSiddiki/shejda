@@ -21,47 +21,68 @@
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label for="">First Name <span>*</span></label>
-                                        <input type="text" id="txtFName" name="fname" value="" class="form-control" placeholder="First Name" required="" autofocus="">
+                                        <input type="text" id="txtFName" name="fname" value="{{ old('fname') }}" class="form-control" placeholder="First Name" required="" autofocus="">
+                                        @error('fname')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label for="">Last Name <span>*</span></label>
-                                        <input type="text" name="lname" value="" class="form-control" placeholder="Last Name" id="txtLName" required="">
+                                        <input type="text" name="lname" value="{{ old('lname') }}" class="form-control" placeholder="Last Name" id="txtLName" required="">
+                                        @error('lname')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label for="">Date of Birth <span>*</span></label>
-                                        <input type="date" name="date_of_birth" value="" class="form-control " placeholder="Last Name" id="txtDOB" required="">
+                                        <input type="date" name="date_of_birth" value="{{ old('date_of_birth') }}" class="form-control " placeholder="Last Name" id="txtDOB" required="">
+                                        @error('date_of_birth')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label for="">Gender <span>*</span></label>
                                         <select name="gender" class="form-select form-control" required="">
-                                            <option selected="">Select Gender</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>
+                                            <option value="" selected>Select Gender</option>
+                                            <option value="1" {{ old('gender') == '1' ? 'selected' : '' }}>Male</option>
+                                            <option value="2" {{ old('gender') == '2' ? 'selected' : '' }}>Female</option>
                                         </select>
+                                        @error('gender')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label for="">Nationality <span>*</span></label>
-                                        <input type="text" name="nationality" value="" class="form-control " placeholder="Nationality" id="txtNationality" required="">
+                                        <input type="text" name="nationality" value="{{ old('nationality') }}" class="form-control " placeholder="Nationality" id="txtNationality" required="">
+                                        @error('nationality')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label for="">Phone <span>*</span></label>
-                                        <input type="text" name="phone" value="" class="form-control " placeholder="Phone" id="txtPhone" required="">
+                                        <input type="text" name="phone" value="{{ old('phone') }}" class="form-control " placeholder="Phone" id="txtPhone" required="">
+                                        @error('phone')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
                                     <div class="form-group">
                                         <label for="">E-mail Address <span>*</span></label>
-                                        <input type="email" name="email" value="" class="form-control " placeholder="E-mail Address" id="txtEmail" required="">
+                                        <input type="email" name="email" value="{{ old('email') }}" class="form-control " placeholder="E-mail Address" id="txtEmail" required="">
+                                        @error('email')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-lg-6 col-md-6">
@@ -69,6 +90,9 @@
                                         <label for="">Drop Your CV/Cover
                                             Letter<span>*</span></label>
                                         <input type="file" name="cv" class="form-control file-input" required="">
+                                        @error('cv')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">

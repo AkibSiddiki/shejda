@@ -25,7 +25,7 @@
                   </div>
                 @endforeach
                   <div class="col-12">
-                      <div class="pagination-wrap">
+                      <div class="my-4">
                           {{ $news->links() }}
                       </div>
                   </div>

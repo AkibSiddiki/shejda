@@ -91,14 +91,21 @@
                                 </li>
                                 <li class="col-xl-7 col-md-4 col-sm-6">
                                     <span>Date</span>
-                                    <div>{{ $job->due_date }} </div>
+                                    <div>{{ \Carbon\Carbon::parse($job->due_date)->format('M d, Y') }} </div>
                                 </li>
                                 <li class="col-xl-5 col-md-4 col-sm-6">
                                     <span>Experience</span>
                                     <div>{{ $job->experience }} years</div>
                                 </li>
                             </ul>
+                            @if($job->due_date >= date('Y-m-d'))
                             <a href="{{ route('web.job.apply', $job) }}" class="btn common-btn w-100">Apply Now</a>
+                            @else
+                            <a href="#" class="btn common-btn w-100 disabled">Apply Now</a>
+                            <div class="text-center">
+                                <small>Due date has passed</small>
+                            </div>
+                            @endif
                         </div>
                     </div>
                 </div>

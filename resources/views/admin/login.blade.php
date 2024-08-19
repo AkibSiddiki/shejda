@@ -43,9 +43,6 @@
                                         <input class="form-check-input" type="checkbox" id="remember-me" />
                                         <label class="form-check-label" for="remember-me"> Remember Me </label>
                                     </div>
-                                    {{-- <a href="auth-forgot-password-basic.html">
-                                    <span>Forgot Password?</span>
-                                </a> --}}
                                 </div>
                             </div>
                             <div class="mb-6">
