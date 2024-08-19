@@ -27,11 +27,12 @@
                                 <td>{{ $applicant->email }}</td>
                                 <td>{{ $applicant->nationality }}</td>
                                 <td>{{ $applicant->date_of_birth }}</td>
-                                <td><a href="{{ asset($applicant->cv) }}" target="_blank"></a></td>
                                 <td>
                                     <a href="{{ asset($applicant->cv) }}" target="_blank" class="btn btn-sm btn-primary text-white p-2">
                                         CV
                                     </a>
+                                </td>
+                                <td>
 
                                     @if ($applicant->is_seen == 1)
                                         <i class='bx bx-low-vision'></i>
