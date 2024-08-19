@@ -15,6 +15,7 @@
                             <th>Email</th>
                             <th>Nationality</th>
                             <th>Date of birth</th>
+                            <th>CV</th>
                             <th width="4%">Action</th>
                         </tr>
                     </thead>
@@ -26,6 +27,7 @@
                                 <td>{{ $applicant->email }}</td>
                                 <td>{{ $applicant->nationality }}</td>
                                 <td>{{ $applicant->date_of_birth }}</td>
+                                <td><a href="{{ asset($applicant->cv) }}" target="_blank"></a></td>
                                 <td>
                                     <a href="{{ asset($applicant->cv) }}" target="_blank" class="btn btn-sm btn-primary text-white p-2">
                                         CV
