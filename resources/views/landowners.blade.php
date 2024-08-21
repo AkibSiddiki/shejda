@@ -34,11 +34,26 @@
             </div>
         </div>
     </section>
-
+    <div class="container my-4">
+        <div class="row">
+            <div class="col-12">
+                @include('shared.success')
+            </div>
+        </div>
+    </div>
     <section class="buyers-contact-form">
         <div class="container">
-            <form class="form" action="#" method="post">
+            <form class="form" action="{{ route('web.landowners.store') }}" method="post">
                 @csrf
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
                 <div class="row">
                     <div class="col-lg-12">
                         <h5>meet the professionals</h5>
@@ -50,48 +65,48 @@
                             <h4>Land Information</h4>
                             <div class="mb-3">
                                 <label class="form-label">Locality</label>
-                                <input type="text" class="form-control" placeholder="Full address of the land">
+                                <input name="locality" type="text" class="form-control" placeholder="Area/neighborhood the land is located" value="{{ old('locality') }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Address</label>
-                                <input type="text" class="form-control"
-                                    placeholder="Size of the land in kathas (rounded)">
+                                <input name="address" type="text" class="form-control"
+                                    placeholder="Full address of the land" value="{{ old('address') }}">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Size of the land</label>
+                                <input name="size" type="text" class="form-control" placeholder="Size of the land In kathas (rounded)" value="{{ old('size') }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Width of the road in front</label>
-                                <input type="text" class="form-control" placeholder="In feet">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Expected Handover Date</label>
-                                <input type="text" class="form-control"
-                                    placeholder="Enter your expected handover/move in date">
+                                <input name="road_width" type="text" class="form-control" placeholder="In feet" value="{{ old('road_width') }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Category of land</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select name="category" class="form-select" aria-label="Default select example">
                                     <option selected="">Select option</option>
-                                    <option value="1">Freehold</option>
-                                    <option value="2">Leasehold</option>
+                                    <option value="1" {{ old('category') == 1 ? 'selected' : '' }}>Freehold</option>
+                                    <option value="2" {{ old('category') == 2 ? 'selected' : '' }}>Leasehold</option>
                                 </select>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Facing</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <select name="facing" class="form-select" aria-label="Default select example">
                                     <option selected="">Select option</option>
-                                    <option value="1">West</option>
-                                    <option value="2">North</option>
-                                    <option value="3">South</option>
+                                    <option value="1" {{ old('facing') == 1 ? 'selected' : '' }}>North</option>
+                                    <option value="2" {{ old('facing') == 2 ? 'selected' : '' }}>South</option>
+                                    <option value="3" {{ old('facing') == 3 ? 'selected' : '' }}>East</option>
+                                    <option value="4" {{ old('facing') == 4 ? 'selected' : '' }}>West</option>
                                 </select>
                             </div>
                             <div class="mb-3">
-                                <label class="form-label">Attractive features (if any)</label>
-                                <select class="form-select" aria-label="Default select example">
+                                <label class="form-label">Attractive feature (if any)</label>
+                                <select name="feature" class="form-select" aria-label="Default select example">
                                     <option selected="">Select option</option>
-                                    <option value="1">Lakeside</option>
-                                    <option value="2">Corner Plot</option>
-                                    <option value="3">Park View</option>
-                                    <option value="4">Main Road</option>
-                                    <option value="5">Others</option>
+                                    <option value="1" {{ old('feature') == 1 ? 'selected' : '' }}>Lakeside</option>
+                                    <option value="2" {{ old('feature') == 2 ? 'selected' : '' }}>Corner Plot</option>
+                                    <option value="3" {{ old('feature') == 3 ? 'selected' : '' }}>Park View</option>
+                                    <option value="4" {{ old('feature') == 4 ? 'selected' : '' }}>Main Road</option>
+                                    <option value="5" {{ old('feature') == 5 ? 'selected' : '' }}>Others</option>
                                 </select>
                             </div>
                         </div>
@@ -101,25 +116,20 @@
                             <h4>Landowners Profile</h4>
                             <div class="mb-3">
                                 <label class="form-label">Name of the landowner*</label>
-                                <input type="text" class="form-control"
-                                    placeholder="Full name of the registered landowner">
+                                <input name="name" type="text" class="form-control"
+                                    placeholder="Full name of the registered landowner" value="{{ old('name') }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Contact person</label>
-                                <input type="text" class="form-control" placeholder="Enter your preferred floor">
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label">Preferred Floor</label>
-                                <input type="text" class="form-control"
-                                    placeholder="Name (if different from the landowner)">
+                                <input name="contact_person" type="text" class="form-control" placeholder="Enter your preferred floor" value="{{ old('contact_person') }}">
                             </div>
                             <div class="mb-3">
                                 <label class="form-label">Email ID</label>
-                                <input type="email" class="form-control" placeholder="Enter the minimum no. of bathrooms">
+                                <input name="email" type="email" class="form-control" placeholder="Enter the minimum no. of bathrooms" value="{{ old('email') }}">
                             </div>
                             <div>
                                 <label class="form-label">Contact number*</label>
-                                <input type="email" class="form-control" placeholder="Contact person's number">
+                                <input name="phone" type="text" class="form-control" placeholder="Contact person's number" value="{{ old('phone') }}">
                             </div>
                         </div>
                     </div>
@@ -139,3 +149,4 @@
 
 
 @endSection
+

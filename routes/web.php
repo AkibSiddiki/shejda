@@ -14,6 +14,8 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProjectBookingController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\LandownerController;
+use App\Http\Controllers\BuyerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
 Route::get('/our-story', [HomeController::class, 'ourStory'])->name('web.ourStory')->middleware('web');
@@ -35,6 +37,8 @@ Route::get('/jobs', [HomeController::class, 'jobList'])->name('web.job.list')->m
 Route::get('/job/{job}', [HomeController::class, 'jobView'])->name('web.job.view')->middleware('web');
 Route::get('/job/apply/{job}', [HomeController::class, 'jobApply'])->name('web.job.apply')->middleware('web');
 Route::post('/job/apply/store/{job}', [HomeController::class, 'jobApplyStore'])->name('web.job.apply.store');
+Route::post('/landowners/store', [LandownerController::class, 'store'])->name('web.landowners.store');
+Route::post('/buyers/store', [BuyerController::class, 'store'])->name('web.buyers.store');
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {
