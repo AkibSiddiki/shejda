@@ -50,33 +50,48 @@
                 <div class="text-truncate" data-i18n="News and Event">News and Event</div>
             </a>
         </li>
+        {{-- //projects --}}
+        @php
+            $unreadProjectBooking = \App\Models\ProjectBooking::where('is_seen', 0)->count();
+        @endphp
         <li
             class="menu-item {{ Route::is('panel.project.index') || Route::is('panel.project.create') || Route::is('panel.project.edit') ? 'active' : '' }}">
             <a href="{{ route('panel.project.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-buildings"></i>
                 <div class="text-truncate" data-i18n="Projects">Projects</div>
+                @if($unreadProjectBooking > 0)<span class="badge rounded-pill bg-danger ms-auto">{{ $unreadProjectBooking }}</span>@endif
             </a>
         </li>
         {{-- //jobs --}}
+        @php
+            $unreadApplicant = \App\Models\Applicant::where('is_seen', 0)->count();
+        @endphp
         <li
             class="menu-item {{ Route::is('panel.job.index') || Route::is('panel.job.create') || Route::is('panel.job.edit') ? 'active' : '' }}">
             <a href="{{ route('panel.job.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-briefcase"></i>
                 <div class="text-truncate" data-i18n="Jobs">Jobs</div>
+                @if($unreadApplicant > 0)<span class="badge rounded-pill bg-danger ms-auto">{{ $unreadApplicant }}</span>@endif
             </a>
         </li>
+        @php
+            $unreadLandowner = \App\Models\Landowner::where('is_seen', 0)->count();
+            $unreadBuyer = \App\Models\Buyer::where('is_seen', 0)->count();
+        @endphp
         <li
-            class="menu-item">
-            <a href="" class="menu-link">
+            class="menu-item {{ Route::is('panel.landowner.index') || Route::is('panel.landowner.view') ? 'active' : '' }}">
+            <a href="{{ route('panel.landowner.index') }}" class="menu-link">
                 <i class='menu-icon tf-icons bx bxs-landmark'></i>
-                <div class="text-truncate" data-i18n="Jobs">Landowners</div>
+                <div class="text-truncate" data-i18n="Landowners">Landowners</div>
+                @if($unreadLandowner > 0)<span class="badge rounded-pill bg-danger ms-auto">{{ $unreadLandowner }}</span>@endif
             </a>
         </li>
         <li
-            class="menu-item">
-            <a href="" class="menu-link">
+            class="menu-item {{ Route::is('panel.buyer.index') || Route::is('panel.buyer.view') ? 'active' : '' }}">
+            <a href="{{ route('panel.buyer.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-conversation"></i>
-                <div class="text-truncate" data-i18n="Jobs">Buyers</div>
+                <div class="text-truncate" data-i18n="Buyers">Buyers</div>
+                @if($unreadBuyer > 0)<span class="badge rounded-pill bg-danger ms-auto">{{ $unreadBuyer }}</span>@endif
             </a>
         </li>
         @php

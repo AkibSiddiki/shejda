@@ -26,6 +26,12 @@ class HomeController extends Controller
         'contact-us',
     ];
 
+    public function underConstruction()
+    {
+        return view('under-construction');
+    }
+
+
     public function index()
     {
         $sliders = Slider::select('title', 'image')->where('status', 1)->get();
@@ -50,17 +56,17 @@ class HomeController extends Controller
     }
 
     public function boardOfDirectors(){
-        $directors = Team::where('type', 1)->orderBy('position', 'ASC')->get();
+        $directors = Team::where('type', 1)->where('status', 1)->orderBy('position', 'ASC')->get();
         return view('board-of-directors', compact('directors'));
     }
 
     public function managementTeam(){
-        $managements = Team::where('type', 2)->orderBy('position', 'ASC')->get();
+        $managements = Team::where('type', 2)->where('status', 1)->orderBy('position', 'ASC')->get();
         return view('management-team', compact('managements'));
     }
 
     public function clients(){
-        $clients = Client::orderBy('title', 'ASC')->get();
+        $clients = Client::where('status', 1)->orderBy('title', 'ASC')->get();
         return view('clients', compact('clients'));
     }
 
@@ -85,7 +91,7 @@ class HomeController extends Controller
     }
 
     public function newsList(){
-        $news = NewsEvent::orderBy('id', 'desc')->paginate(10);
+        $news = NewsEvent::where('status', 1)->orderBy('id', 'desc')->paginate(10);
         return view('news-list', compact('news'));
     }
 
@@ -95,9 +101,9 @@ class HomeController extends Controller
 
     public function projectList($type, $p_type = null){
         if($p_type == null){
-            $projects = Project::where('type', $type)->orderBy('id', 'desc')->paginate(10);
+            $projects = Project::where('type', $type)->where('status', 1)->orderBy('id', 'desc')->paginate(10);
         }else{
-            $projects = Project::where('type', $type)->where('property_type', $p_type)->orderBy('id', 'desc')->paginate(10);
+            $projects = Project::where('type', $type)->where('status', 1)->where('property_type', $p_type)->orderBy('id', 'desc')->paginate(10);
         }
         return view('project-list', compact('projects', 'p_type', 'type'));
     }
@@ -110,7 +116,7 @@ class HomeController extends Controller
 
 
     public function jobList(){
-        $jobs = Job::orderBy('id', 'desc')->paginate(10);
+        $jobs = Job::where('status', 1)->orderBy('id', 'desc')->paginate(10);
         return view('jobs', compact('jobs'));
     }
 
@@ -119,7 +125,8 @@ class HomeController extends Controller
     }
 
     public function jobApply(Job $job){
-        if($job->due_date <= date('Y-m-d')){
+
+        if($job->due_date <= date('Y-m-d') && $job->status == 1){
             abort(404);
         }
         return view('job-apply', compact('job'));
@@ -149,7 +156,7 @@ class HomeController extends Controller
         $validateData['job_post_id'] = $job->id;
         Applicant::create($validateData);
 
-        return redirect()->route('web.job.list')->with('success', 'Applicant created successfully.');
+        return redirect()->route('web.job.list')->with('success', 'Your application has been submitted successfully.');
     }
 
 }

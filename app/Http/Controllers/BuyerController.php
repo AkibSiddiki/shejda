@@ -9,9 +9,17 @@ class BuyerController extends Controller
 {
     public function index()
     {
-        $buyers = \App\Models\Buyer::all();
-        return view('buyers', compact('buyers'));
+        $buyers = Buyer::orderBy('id', 'desc')->paginate(10);
+        return view('admin.buyer-index', compact('buyers'));
     }
+
+    public function view(Buyer $buyer)
+    {
+        $buyer->is_seen = 1;
+        $buyer->save();
+        return view('admin.buyer-view', compact('buyer'));
+    }
+
     public function store(Request $request)
     {
         $validateData = $request->validate([

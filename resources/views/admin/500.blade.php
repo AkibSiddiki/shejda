@@ -12,7 +12,7 @@
                         <h4 class="mb-2 mx-2">Server Error</h4>
                         <p class="mb-6 mx-2">We're sorry, but we're having trouble processing your request. It looks like
                             something went wrong on our servers.</p>
-                        <a href="{{ route('home') }}" class="btn btn-primary">Back to home</a>
+                        {{-- <a href="{{ route('home') }}" class="btn btn-primary">Back to home</a> --}}
                     </div>
                 </div>
             </div>

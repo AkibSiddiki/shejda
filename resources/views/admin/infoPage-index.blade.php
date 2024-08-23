@@ -12,7 +12,7 @@
                         <tr>
                             <th>Title</th>
                             <th>Slug</th>
-                            <th width="10%">Status</th>
+                            {{-- <th width="10%">Status</th> --}}
                             <th width="10%">Action</th>
                         </tr>
                     </thead>
@@ -21,13 +21,13 @@
                             <tr>
                                 <td>{{ $infoPage->title }}</td>
                                 <td>{{ $infoPage->slug }}</td>
-                                <td>
+                                {{-- <td>
                                     <a type="button"
                                         class="btn btn-sm {{ $infoPage->status ? 'btn-success' : 'btn-warning' }} text-white"
                                         href="{{ route('panel.infoPage.status', $infoPage) }}">
                                         {{ $infoPage->status ? 'Publish' : 'Unpublish' }}
                                     </a>
-                                </td>
+                                </td> --}}
                                 <td>
                                     <div class="d-flex align-items-center justify-content-between">
                                         <a href="{{ route('panel.infoPage.edit', $infoPage) }}"

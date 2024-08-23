@@ -31,7 +31,14 @@ class LandownerController extends Controller
 
     public function index()
     {
-        $landowners = \App\Models\Landowner::all();
-        return view('landowners', compact('landowners'));
+        $landowners = Landowner::latest()->paginate(10);
+        return view('admin.landowner-index', compact('landowners'));
+    }
+
+    public function view(Landowner $landowner)
+    {
+        $landowner->is_seen = 1;
+        $landowner->save();
+        return view('admin.landowner-view', compact('landowner'));
     }
 }

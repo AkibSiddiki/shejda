@@ -17,6 +17,15 @@
             </div>
         </div>
     </section>
+    <section class="mt-4">
+        <div class="container">
+        <div class="row">
+            <div class="col-12">
+                @include('shared.success')
+            </div>
+        </div>
+        </div>
+    </section>
     <section class="contact-page">
         <div class="container">
             <div class="row">

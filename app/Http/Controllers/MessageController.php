@@ -27,7 +27,7 @@ class MessageController extends Controller
         $message->message = $request->input('message');
         $message->save();
 
-        return redirect()->back()->with('success', 'Message sent successfully');
+        return redirect()->route('web.contactUs')->with('success', 'Message sent successfully');
     }
 
     public function messageSeen(Message $message)

@@ -11,7 +11,7 @@
                         <h1 class="mb-2 mx-2" style="line-height: 8rem; font-size: 6rem; color: #696cff3b">419</h1>
                         <h4 class="mb-2 mx-2">Page Expired</h4>
                         <p class="mb-6 mx-2">Your session has expired</p>
-                        <a href="{{ route('home') }}" class="btn btn-primary">Back to home</a>
+                        {{-- <a href="{{ route('home') }}" class="btn btn-primary">Back to home</a> --}}
                     </div>
                 </div>
             </div>

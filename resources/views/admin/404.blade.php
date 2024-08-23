@@ -11,7 +11,7 @@
                         <h1 class="mb-2 mx-2" style="line-height: 8rem; font-size: 6rem; color: #696cff3b">404</h1>
                         <h4 class="mb-2 mx-2">Page Not Found</h4>
                         <p class="mb-6 mx-2">we couldn't find the page you are looking for</p>
-                        <a href="{{ route('home') }}" class="btn btn-primary">Back to home</a>
+                        {{-- <a href="{{ route('home') }}" class="btn btn-primary">Back to home</a> --}}
                     </div>
                 </div>
             </div>

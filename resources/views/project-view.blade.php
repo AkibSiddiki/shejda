@@ -60,6 +60,11 @@
             </div>
         </div>
     </section>
+    @php
+        $photos = $project->photos;
+        $i = 1;
+    @endphp
+    @if($photos->count() > 0)
     <section class="photo-gallery-page">
         <div class="container">
             <div class="row">
@@ -70,14 +75,11 @@
                 </div>
             </div>
             <div class="row gx-0">
-                @php
-                    $photos = $project->photos;
-                    $i = 1;
-                @endphp
                 @foreach ($photos as $photo)
                     <div class="col-lg-4 col-md-6">
                         <div class="gallery-img">
-                            <a href="{{ asset($photo->image) }}" data-fancybox="gallery" data-caption="{{ $i }}">
+                            <a href="{{ asset($photo->image) }}" data-fancybox="gallery"
+                                data-caption="{{ $i }}">
                                 <div class="gllery-img-wrap">
                                     <img class="img-fluid" src="{{ asset($photo->image) }}" alt="{{ $project->title }}"
                                         title="{{ $project->title }}">
@@ -95,6 +97,7 @@
             </div>
         </div>
     </section>
+    @endif
     <section class="booking-now-area">
         <div class="container">
             <div class="row">
@@ -107,42 +110,46 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="booking-img-wrap">
-                        <img class="img-fluid w-100" src="{{ asset('assets/web/image/bg/project/1627919131g61t1.jpg') }}" alt="" title="">
+                        <img class="img-fluid w-100" src="{{ asset('assets/web/image/bg/project/1627919131g61t1.jpg') }}"
+                            alt="" title="">
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="booking-form-wrap">
                         <form action="{{ route('web.project.booking.store', $project) }}" method="post">
                             @csrf
-                              <div class="mb-3">
+                            <div class="mb-3">
                                 <label class="form-label">Name</label>
-                                <input type="text" class="form-control" name="name" placeholder="Enter your full name here">
+                                <input type="text" class="form-control" name="name"
+                                    placeholder="Enter your full name here">
                                 @error('name')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                              </div>
-                              <div class="mb-3">
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control" name="email" placeholder="Enter your email ID here">
+                                <input type="email" class="form-control" name="email"
+                                    placeholder="Enter your email ID here">
                                 @error('email')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                              </div>
-                              <div class="mb-3">
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label">Contact number</label>
-                                <input type="text" class="form-control" name="phone" placeholder="Enter your contact number here">
+                                <input type="text" class="form-control" name="phone"
+                                    placeholder="Enter your contact number here">
                                 @error('phone')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                              </div>
-                              <div class="mb-4">
+                            </div>
+                            <div class="mb-4">
                                 <label class="form-label">Message</label>
                                 <textarea class="form-control" name="message" placeholder="Enter your message here" rows="5"></textarea>
                                 @error('message')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
-                              </div>
-                              <button type="submit" class="common-btn mt-0" href="about-us.php">Book Now</button>
+                            </div>
+                            <button type="submit" class="common-btn mt-0" href="about-us.php">Book Now</button>
                         </form>
                     </div>
                 </div>

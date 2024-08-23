@@ -17,28 +17,32 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\LandownerController;
 use App\Http\Controllers\BuyerController;
 
-Route::get('/', [HomeController::class, 'index'])->name('web.home')->middleware('web');
-Route::get('/our-story', [HomeController::class, 'ourStory'])->name('web.ourStory')->middleware('web');
-Route::get('/mission-vision', [HomeController::class, 'missionVision'])->name('web.missionVision')->middleware('web');
-Route::get('/landowners', [HomeController::class, 'landowners'])->name('web.landowners')->middleware('web');
-Route::get('/buyers', [HomeController::class, 'buyers'])->name('web.buyers')->middleware('web');
-Route::get('/customers', [HomeController::class, 'customers'])->name('web.customers')->middleware('web');
-Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('web.contactUs')->middleware('web');
-Route::get('/news-events', [HomeController::class, 'newsList'])->name('web.news.list')->middleware('web');
-Route::get('/news-event/{news}', [HomeController::class, 'newsView'])->name('web.news.view')->middleware('web');
-Route::get('/projects/{type}/{p_type?}', [HomeController::class, 'projectList'])->name('web.project.list')->middleware('web');
-Route::get('/project/{project}', [HomeController::class, 'projectView'])->name('web.project.view')->middleware('web');
-Route::post('/project/booking/store/{project}', [ProjectBookingController::class, 'store'])->name('web.project.booking.store');
-Route::get('/board-of-directors', [HomeController::class, 'boardOfDirectors'])->name('web.boardOfDirectors')->middleware('web');
-Route::get('/management-team', [HomeController::class, 'managementTeam'])->name('web.managementTeam')->middleware('web');
-Route::post('/message/store', [MessageController::class, 'store'])->name('web.message.store');
-Route::get('/clients', [HomeController::class, 'clients'])->name('web.clients')->middleware('web');
-Route::get('/jobs', [HomeController::class, 'jobList'])->name('web.job.list')->middleware('web');
-Route::get('/job/{job}', [HomeController::class, 'jobView'])->name('web.job.view')->middleware('web');
-Route::get('/job/apply/{job}', [HomeController::class, 'jobApply'])->name('web.job.apply')->middleware('web');
-Route::post('/job/apply/store/{job}', [HomeController::class, 'jobApplyStore'])->name('web.job.apply.store');
-Route::post('/landowners/store', [LandownerController::class, 'store'])->name('web.landowners.store');
-Route::post('/buyers/store', [BuyerController::class, 'store'])->name('web.buyers.store');
+Route::get('/', [HomeController::class, 'underConstruction'])->name('under-construction')->middleware('web');
+
+Route::group(['prefix' => 'beta-v1', 'as' => 'web.'], function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('web');
+    Route::get('/our-story', [HomeController::class, 'ourStory'])->name('ourStory')->middleware('web');
+    Route::get('/mission-vision', [HomeController::class, 'missionVision'])->name('missionVision')->middleware('web');
+    Route::get('/landowners', [HomeController::class, 'landowners'])->name('landowners')->middleware('web');
+    Route::get('/buyers', [HomeController::class, 'buyers'])->name('buyers')->middleware('web');
+    Route::get('/customers', [HomeController::class, 'customers'])->name('customers')->middleware('web');
+    Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contactUs')->middleware('web');
+    Route::get('/news-events', [HomeController::class, 'newsList'])->name('news.list')->middleware('web');
+    Route::get('/news-event/{news}', [HomeController::class, 'newsView'])->name('news.view')->middleware('web');
+    Route::get('/projects/{type}/{p_type?}', [HomeController::class, 'projectList'])->name('project.list')->middleware('web');
+    Route::get('/project/{project}', [HomeController::class, 'projectView'])->name('project.view')->middleware('web');
+    Route::post('/project/booking/store/{project}', [ProjectBookingController::class, 'store'])->name('project.booking.store');
+    Route::get('/board-of-directors', [HomeController::class, 'boardOfDirectors'])->name('boardOfDirectors')->middleware('web');
+    Route::get('/management-team', [HomeController::class, 'managementTeam'])->name('managementTeam')->middleware('web');
+    Route::post('/message/store', [MessageController::class, 'store'])->name('message.store');
+    Route::get('/clients', [HomeController::class, 'clients'])->name('clients')->middleware('web');
+    Route::get('/jobs', [HomeController::class, 'jobList'])->name('job.list')->middleware('web');
+    Route::get('/job/{job}', [HomeController::class, 'jobView'])->name('job.view')->middleware('web');
+    Route::get('/job/apply/{job}', [HomeController::class, 'jobApply'])->name('job.apply')->middleware('web');
+    Route::post('/job/apply/store/{job}', [HomeController::class, 'jobApplyStore'])->name('job.apply.store');
+    Route::post('/landowners/store', [LandownerController::class, 'store'])->name('landowners.store');
+    Route::post('/buyers/store', [BuyerController::class, 'store'])->name('buyers.store');
+});
 
 // admin routes - start
 Route::prefix('users-mG40sI')->group(function () {
@@ -124,6 +128,15 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     Route::post('/client/update/{client}', [ClientController::class, 'update'])->name('client.update');
     Route::get('/client/status/{client}', [ClientController::class, 'statusToggle'])->name('client.status');
     Route::delete('/client/delete/{client}', [ClientController::class, 'destroy'])->name('client.destroy');
+
+    //landowner
+    Route::get('/landowners', [LandownerController::class, 'index'])->name('landowner.index');
+    Route::get('/landowner/view/{landowner}', [LandownerController::class, 'view'])->name('landowner.view');
+
+    //buyer
+    Route::get('/buyers', [BuyerController::class, 'index'])->name('buyer.index');
+    Route::get('/buyer/view/{buyer}', [BuyerController::class, 'view'])->name('buyer.view');
+
 
 
 });

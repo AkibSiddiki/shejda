@@ -11,6 +11,12 @@ class Job extends Model
     protected $table = 'job_posts';
     protected $guarded = [];
 
+    const TYPE = [
+        1 => 'Full Time',
+        2 => 'Part Time',
+        3 => 'Internship',
+    ];
+
     public function applicants()
     {
         return $this->hasMany(Applicant::class, 'job_post_id', 'id');

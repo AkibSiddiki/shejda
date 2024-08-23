@@ -10,4 +10,12 @@ class Buyer extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    const FACING = [
+        1 => 'North',
+        2 => 'South',
+        3 => 'East',
+        4 => 'West'
+    ];
+
 }

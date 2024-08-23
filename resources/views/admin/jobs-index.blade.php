@@ -25,22 +25,10 @@
                             <tr>
                                 <td>{{ $job->title }}</td>
                                 <td>
-                                    {{ $job->due_date }}
+                                    {{ \Carbon\Carbon::parse($job->due_date)->format('M d, Y') }}
                                 </td>
                                 <td>
-                                    @switch($job->type)
-                                        @case(1)
-                                            Full Time
-                                        @break
-
-                                        @case(2)
-                                            Part Time
-                                        @break
-
-                                        @case(3)
-                                            Internship
-                                        @break
-                                    @endswitch
+                                    {{ \App\Models\Job::TYPE[$job->type] }}
                                 </td>
                                 <td>
                                     <a type="button"
