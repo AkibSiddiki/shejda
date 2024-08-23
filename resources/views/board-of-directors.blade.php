@@ -32,7 +32,7 @@
                         <img class="img-fluid" src="{{ asset($director->image) }}" alt="{{ $director->name }}" title="{{ $director->name }}">
                         <h5>{{ $director->name }}</h5>
                         <h6>{{ $director->designation }}</h6>
-                        <p>{{ $director->bio }}</p>
+                        <p>{!! $director->bio !!}</p>
                     </div>
                     @endforeach
                 </div>
