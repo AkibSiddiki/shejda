@@ -16,8 +16,18 @@ use App\Http\Controllers\TeamController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\LandownerController;
 use App\Http\Controllers\BuyerController;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', [HomeController::class, 'underConstruction'])->name('under-construction')->middleware('web');
+//clear-cache
+Route::get('/clear-cache', function () {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:clear');
+    $exitCode = Artisan::call('view:clear');
+    $exitCode = Artisan::call('route:clear');
+    $exitCode = Artisan::call('optimize');
+    return 'DONE'; //Return anything
+});
 
 Route::group(['prefix' => 'beta-v1', 'as' => 'web.'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('web');
@@ -136,7 +146,6 @@ Route::prefix('panel-mG40sI')->middleware('auth')->name('panel.')->group(functio
     //buyer
     Route::get('/buyers', [BuyerController::class, 'index'])->name('buyer.index');
     Route::get('/buyer/view/{buyer}', [BuyerController::class, 'view'])->name('buyer.view');
-
 
 
 });

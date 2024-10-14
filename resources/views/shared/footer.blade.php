@@ -15,10 +15,10 @@
                                     </div>
                                     <p class="footer-widget__about-text">Shejda Development & Holdings Ltd.<br>977,
                                         East Shewrapara (1st Floor), <br>Orbit Lane, Dhaka-1216, Bangladesh.</p>
-                                    <p class="footer-widget__about-email"><a href="tel:01758000000">01758000000</a>
+                                    <p class="footer-widget__about-email"><a href="tel:+8801601159693">+8801601159693</a>
                                     </p>
                                     <p class="footer-widget__about-email"><a
-                                            href="mailto:info@shajda.com">info@shajda.com</a></p>
+                                            href="mailto:shejdadevelopment@gmail.com">shejdadevelopment@gmail.com</a></p>
                                 </div>
                             </div>
 
