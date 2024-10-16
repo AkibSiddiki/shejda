@@ -26,6 +26,7 @@
                     @include('shared.sidemenu-about')
                 </div>
                 <div class="col-lg-9">
+                    @if($managements->count() > 0)
                     <div class="row">
                         <div class="col-md-5">
                             <div class="team-big-profile-img">
@@ -64,6 +65,7 @@
                             @endforeach
                         </div>
                     </div>
+                    @endif
                 </div>
             </div>
         </div>
