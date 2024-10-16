@@ -18,7 +18,7 @@ use App\Http\Controllers\LandownerController;
 use App\Http\Controllers\BuyerController;
 use Illuminate\Support\Facades\Artisan;
 
-Route::get('/', [HomeController::class, 'underConstruction'])->name('under-construction')->middleware('web');
+// Route::get('/under-construction', [HomeController::class, 'underConstruction'])->name('under-construction')->middleware('web');
 //clear-cache
 Route::get('/clear-cache', function () {
     $exitCode = Artisan::call('cache:clear');
@@ -29,7 +29,7 @@ Route::get('/clear-cache', function () {
     return 'DONE'; //Return anything
 });
 
-Route::group(['prefix' => 'beta-v1', 'as' => 'web.'], function () {
+Route::group(['as' => 'web.'], function () {
     Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('web');
     Route::get('/our-story', [HomeController::class, 'ourStory'])->name('ourStory')->middleware('web');
     Route::get('/mission-vision', [HomeController::class, 'missionVision'])->name('missionVision')->middleware('web');
