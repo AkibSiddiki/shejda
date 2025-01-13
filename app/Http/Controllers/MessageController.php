@@ -34,7 +34,6 @@ class MessageController extends Controller
         Mail::send('shared.mail', ['body' => $request->input('message'), 'name' => $request->input('name'), 'email' => $request->input('email')], function ($mail) use ($request) {
             $mail->from(env('MAIL_FROM_ADDRESS', 'support@shejda.com'));
             $mail->to('shejdadevelopment@gmail.com')->subject('Contact Us Message from ' . $request->input('name'));
-            $mail->cc(['akib.siddiki@gmail.com', 'mahedi@emythmakers.com'])->subject('Contact Us Message from ' . $request->input('name'));
         });
 
         // Send email to user
