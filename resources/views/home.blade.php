@@ -1,5 +1,8 @@
 @extends('layout.web')
 @section('title', 'Home')
+@section('headscripts')
+    <script async src="https://www.google.com/recaptcha/api.js"></script>
+@endsection
 @section('main')
     <!-- hero-area-start -->
     <section class="hero-area">
@@ -331,6 +334,14 @@
                                                 <p class="text-danger">{{ $message }}</p>
                                             @enderror
                                         </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <!-- Google Recaptcha Widget-->
+                                        <div class="g-recaptcha mt-4" data-sitekey={{ config('services.recaptcha.key') }}>
+                                        </div>
+                                        @error('g-recaptcha-response')
+                                            <p class="text-danger">{{ $message }}</p>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button type="submit" class="btn common-btn mt-4">Submit</button>

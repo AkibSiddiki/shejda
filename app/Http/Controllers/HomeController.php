@@ -38,7 +38,7 @@ class HomeController extends Controller
         $welcome = InfoPage::where('slug', $this->pageSlug[0])->first();
         $why = InfoPage::where('slug', $this->pageSlug[1])->first();
         $projects = Project::orderBy('id', 'desc')->take(8)->get();
-        $news = NewsEvent::orderBy('id', 'desc')->take(3)->get();
+        $news = NewsEvent::where('status', 1)->orderBy('id', 'desc')->take(3)->get();
         $contact = InfoPage::where('slug', 'contact-us')->get()->first();
         return view('home', compact('sliders', 'welcome', 'why', 'projects', 'news', 'contact'));
     }
